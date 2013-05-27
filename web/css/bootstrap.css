@@ -5418,7 +5418,7 @@ button.close {
 .visible-desktop {
   display: inherit !important;
 }
-@media (min-width: 768px) and (max-width: 979px) {
+/* @media (min-width: 768px) and (max-width: 979px) {
   .hidden-desktop {
     display: inherit !important;
   }
@@ -6727,3 +6727,4 @@ button.close {
     overflow: visible !important;
   }
 }
+ */

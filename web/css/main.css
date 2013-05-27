@@ -1,0 +1,245 @@
+html {
+  height: 100.1%;
+}
+
+body {
+  font-family: 'PT Sans', sans-serif;
+  font-weight: bold;
+}
+
+.muted {
+  color: #B2BABB;
+}
+
+.m0 {
+  margin: 0 !important;
+}
+
+.striped-head {
+  text-align: center;
+  background: transparent url(/img/striped-head-bg.png) center repeat-x;
+  color: #646C7B;
+}
+  .striped-head .head {
+    position: relative;
+    display: inline-block;
+    padding: 0 1em;
+    background-color: #fff;
+  }
+    .striped-head .subhead {
+      font-size: 14px;
+      position: absolute;
+      top: -2em;
+      left: 0;
+      display: inline-block;
+      width: 100%;
+    }
+  .bullet {
+    padding: 8px;
+    background: transparent url(/img/bullet.png) center no-repeat;
+  }
+
+.nav-list {
+  padding-right: 0;
+  padding-left: 20px;
+}
+
+#header,
+#footer {
+  background-color: #fff;
+}
+
+#login-bar {
+  background-color: #2C3E50;
+}
+
+#choose-city-bar {
+  background-color: #16A085;
+  color: #fff;
+}
+
+#header {
+  font-size: 17px;
+  padding: 2em 0;
+}
+  .head-nav {
+    position: relative;
+  }
+    .head-nav .nav {
+      margin: 0;
+    }
+      .head-nav .nav a {
+        color: #19BB9B;
+        -webkit-border-radius: 9000px;
+        -moz-border-radius: 9000px;
+        border-radius: 9000px;
+        text-decoration: underline;
+        background-color: transparent;
+        font-size: 17px;
+      }
+      .head-nav .nav .active a {
+        background-color: #7F8B97;
+        color: #fff;
+        text-decoration: none;
+      }
+    .mega-basket {
+      position: absolute;
+      top: -2em;
+      left: 40%;
+      background: transparent url(/img/mega-basket-bg.png) center no-repeat;
+      width: 220px;
+      height: 146px;
+      text-align: center;
+    }
+      .mega-basket .city-chooser {
+        display: block;
+        line-height: 28px;
+        color: #fff;
+        font-size: 15px;
+      }
+      .mega-basket .logo {
+        display: block;
+        height: 65px;
+      }
+      .mega-basket .basket {
+        display: inline-block;
+        height: 53px;
+        width: 50%;
+        background: transparent url(/img/basket-bg.png) center no-repeat;
+        font-size: 14px;
+        color: #fff;
+      }
+        .mega-basket .basket .counter {
+          display: inline-block;
+          background-color: #E74C3C;
+          border-color: #E74C3C;
+          padding: 0 7px;
+          position: relative;
+          left: 24px;
+          top: 8px;
+        }
+
+#content {
+  background: #ECF0F5 url(/img/body-bg.png) top left repeat;
+  padding-bottom: 3em;
+  padding-top: 5em;
+}
+
+.nav-pills > li {
+  margin-right: .7em;
+}
+  .nav-pills > li > a {
+    color: #646C7B;
+    -webkit-border-radius: 9000px;
+    -moz-border-radius: 9000px;
+    border-radius: 9000px;
+    font-size: 15px;
+    background-color: #fff;
+    padding: .6em 1em;
+  }
+  .nav-pills > li.active > a {
+    background-color: #7F8B97;
+  }
+
+.mega-cells {
+}
+  .mega-cells .cell {
+    background: transparent url(/img/mega-cell-bg.png) center no-repeat;
+  }
+    .mega-cells .cell .cell-image {
+      background-position: 50% 5px;
+      background-repeat: no-repeat;
+      padding: 5px;
+      height: 350px;
+      overflow: hidden;
+      position: relative;
+    }
+      .mega-cells .cell .description {
+        background-color: rgba(44,62,80,.78);
+        color: #fff;
+        font-size: 19px;
+        position: absolute;
+        bottom: 65px;
+        width: 330px;
+      }
+      .mega-cells .cell .buy-me-faster {
+        position: absolute;
+        bottom: 5px;
+        width: 330px;
+        background-color: #2C3E50;
+        height: 60px;
+        color: #fff;
+        font-size: 31px;
+        text-align: center;
+      }
+        .mega-cells .cell .buy-me-faster .discount {
+          background: transparent url(/img/buy-me-faster-bg.png) right center no-repeat;
+          width: 110px;
+          height: 60px;
+          line-height: 70px;
+          position: relative;
+        }
+          .mega-cells .cell .buy-me-faster .discount:before {
+            content: "право на скидку";
+            font-size: 13px;
+            position: absolute;
+            top: -22px;
+            left: 7px;
+            color: #B0DFD5;
+          }
+          .mega-cells .cell .buy-me-faster .discount .percent {
+            font-size: 19px;
+            position: relative;
+            top: -8px;
+            left: 3px;
+          }
+        .mega-cells .cell .buy-me-faster .price {
+          position: absolute;
+          left: 148px;
+          top: 25px;
+        }
+          .mega-cells .cell .buy-me-faster .price .currency {
+            font-size: 15px;
+            position: relative;
+            top: -10px;
+            left: 3px;
+          }
+        .mega-cells .cell .buy-me-faster .buy {
+          position: absolute;
+          right: 20px;
+          top: 17px;
+          font-size: 17px;
+        }
+
+#footer {
+  padding-top: 3em;
+  padding-bottom: 20em;
+}
+  .footer-navs {
+    margin-top: 2em;
+  }
+    .footer-navs .nav {
+      color: #7F8B97;
+      font-size: 17px;
+    }
+      .footer-navs .nav-header {
+        text-transform: none;
+        font-size: 23px;
+        color: #646C7B;
+        margin-bottom: .7em;
+      }
+      .footer-navs .nav a {
+        color: #7F8B97;
+      }
+  .footer-last {
+    margin-top: 5em;
+    font-size: 14px;
+  }
+    .who-we-are {
+    }
+    .money-we-accept {
+    }
+    .follow-the-white-rabbit {
+      font-size: 15px;
+      color: #7F8B97;
+    }
