@@ -144,72 +144,104 @@ body {
 .mega-cells {
 }
   .mega-cells .cell {
-    background: transparent url(/img/mega-cell-bg.png) center no-repeat;
+    width: 330px;
+    margin: 5px;
+    margin-left: 25px;
+    background-repeat: no-repeat;
+    height: 350px;
+    position: relative;
   }
-    .mega-cells .cell .cell-image {
-      background-position: 50% 5px;
-      background-repeat: no-repeat;
-      padding: 5px;
-      height: 350px;
+    .mega-cells .cell .description {
+      background-color: rgba(44,62,80,.78);
+      color: #fff;
+      font-size: 19px;
+      position: absolute;
+      bottom: 60px;
+      padding: 15px;
+      letter-spacing: -1px;
       overflow: hidden;
-      position: relative;
     }
-      .mega-cells .cell .description {
-        background-color: rgba(44,62,80,.78);
-        color: #fff;
-        font-size: 19px;
-        position: absolute;
-        bottom: 65px;
-        width: 330px;
+      .mega-cells .cell .description .counters {
+        font-size: 14px;
+        letter-spacing: -1px;
+        margin-top: 25px;
       }
-      .mega-cells .cell .buy-me-faster {
-        position: absolute;
-        bottom: 5px;
-        width: 330px;
-        background-color: #2C3E50;
-        height: 60px;
-        color: #fff;
-        font-size: 31px;
-        text-align: center;
-      }
-        .mega-cells .cell .buy-me-faster .discount {
-          background: transparent url(/img/buy-me-faster-bg.png) right center no-repeat;
-          width: 110px;
-          height: 60px;
-          line-height: 70px;
+        .mega-cells .cell .description .counters:before {
+          content: "";
+          display: block;
+          border-top: 1px solid #53565F;
           position: relative;
+          top: -10px;
+          width: 200%;
+          left: -50%;
         }
-          .mega-cells .cell .buy-me-faster .discount:before {
-            content: "право на скидку";
-            font-size: 13px;
-            position: absolute;
-            top: -22px;
-            left: 7px;
-            color: #B0DFD5;
-          }
-          .mega-cells .cell .buy-me-faster .discount .percent {
-            font-size: 19px;
-            position: relative;
-            top: -8px;
-            left: 3px;
-          }
-        .mega-cells .cell .buy-me-faster .price {
+        .mega-cells .cell .description .counters>span{
+          display: inline-block;
+          background: transparent url(/img/counters-eta-icon.png) left center no-repeat;
+          padding-left: 25px;
+          line-height: 25px;
+          margin-left: 45px;
+        }
+        .mega-cells .cell .description .counters .eta {
+          margin-left: 0;
+          padding-left: 29px;
+        }
+        .mega-cells .cell .description .counters .comments {
+          background-image: url(/img/counters-comments-icon.png);
+        }
+        .mega-cells .cell .description .counters .likes {
+          background-image: url(/img/counters-likes-icon.png);
+        }
+    .mega-cells .cell .buy-me-faster {
+      position: absolute;
+      bottom: 0;
+      background: #2C3E50 url(/img/buy-me-faster-bg.png) left center no-repeat;
+      height: 60px;
+      color: #fff;
+      font-size: 31px;
+      text-align: center;
+      margin-left: 0;
+    }
+      .mega-cells .cell .buy-me-faster>div {
+        line-height: 65px;
+        letter-spacing: -4px;
+      }
+      .mega-cells .cell .buy-me-faster>div:first-child {
+        margin-left: 0;
+      }
+      .mega-cells .cell .buy-me-faster .discount {
+        position: relative;
+      }
+        .mega-cells .cell .buy-me-faster .discount:before {
+          content: "право на скидку";
+          font-size: 13px;
           position: absolute;
-          left: 148px;
-          top: 25px;
+          top: -22px;
+          left: 7px;
+          color: #B0DFD5;
+          letter-spacing: normal;
         }
-          .mega-cells .cell .buy-me-faster .price .currency {
-            font-size: 15px;
-            position: relative;
-            top: -10px;
-            left: 3px;
-          }
-        .mega-cells .cell .buy-me-faster .buy {
-          position: absolute;
-          right: 20px;
-          top: 17px;
-          font-size: 17px;
+        .mega-cells .cell .buy-me-faster .discount .percent {
+          font-size: 19px;
+          position: relative;
+          top: -8px;
+          left: 5px;
         }
+      .mega-cells .cell .buy-me-faster .price {
+      }
+        .mega-cells .cell .buy-me-faster .price .currency {
+          font-size: 15px;
+          position: relative;
+          top: -10px;
+          left: 7px;
+          letter-spacing: normal;
+        }
+      .mega-cells .cell .buy-me-faster .buy {
+        font-size: 17px;
+        letter-spacing: normal;
+        line-height: 57px;
+        margin-left: 10px;
+      }
 
 #footer {
   padding-top: 3em;
@@ -243,3 +275,36 @@ body {
       font-size: 15px;
       color: #7F8B97;
     }
+
+.mega-border {
+    display: inline-block;
+    box-shadow:
+        0 0 0 1px #fff,
+        0 0 0 2px #e3e3e3,
+        0 0 0 3px #dbdbdb,
+        0 0 0 4px #d0d0d0,
+        0 0 0 5px #bfbfbf
+    ;
+    position: relative;
+}
+  .mega-border:after,
+  .mega-border:before {
+      position: absolute;
+      display: block;
+      top: -5px;
+      left: -5px;
+      height: 1px;
+      width: 1px;
+      background-color: #f3f3f3;
+      content: "";
+  }
+  .mega-border:after {
+      left: auto;
+      right: -5px;
+  }
+  .mega-border.with-dot-shadows:before {
+      box-shadow: 1px 1px 1px #ccc;
+  }
+  .mega-border.with-dot-shadows:after {
+      box-shadow: -1px 1px 1px #ccc;
+  }
