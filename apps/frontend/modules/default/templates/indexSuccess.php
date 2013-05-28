@@ -1,4 +1,4 @@
-<div class="text-center"> <!-- http://stackoverflow.com/questions/7165423/twitter-bootstrap-center-pills -->
+<div class="text-center">
   <ul class="nav nav-pills" style="display:inline-block">
     <li class="active"><a href="">Все</a></li>
     <li><a href="">Красота</a></li>

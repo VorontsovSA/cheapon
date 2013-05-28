@@ -15,12 +15,16 @@ body {
   margin: 0 !important;
 }
 
+.nav-centered {
+  display: inline-block;
+}
+
 .striped-head {
   text-align: center;
   background: transparent url(/img/striped-head-bg.png) center repeat-x;
   color: #646C7B;
 }
-  .striped-head .head {
+  .striped-head > :first-child {
     position: relative;
     display: inline-block;
     padding: 0 1em;
@@ -122,7 +126,7 @@ body {
 #content {
   background: #ECF0F5 url(/img/body-bg.png) top left repeat;
   padding-bottom: 3em;
-  padding-top: 5em;
+  padding-top: 6em;
 }
 
 .nav-pills > li {
@@ -277,7 +281,6 @@ body {
     }
 
 .mega-border {
-    display: inline-block;
     box-shadow:
         0 0 0 1px #fff,
         0 0 0 2px #e3e3e3,
@@ -308,3 +311,13 @@ body {
   .mega-border.with-dot-shadows:after {
       box-shadow: -1px 1px 1px #ccc;
   }
+
+.page {
+  background-color: #fff;
+  margin-top: 3em;
+  padding: 50px 35px;
+
+  /* FIXME: move to body and check all the makeup */
+  font-size: 17px;
+  color: #7F8B97;
+}
