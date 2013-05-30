@@ -1,0 +1,8 @@
+new:
+  credentials: [[can_create_citys]]
+
+edit:
+  credentials: [[can_edit_citys]]
+
+delete:
+  credentials: [[can_delete_citys]]

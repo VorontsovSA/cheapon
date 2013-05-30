@@ -1,0 +1,354 @@
+sfGuardUser:
+  relations:
+    ReadComments:
+      class: Comment
+      refClass: RefCommentRead
+      local: user_id
+      foreign: comment_id
+      foreignAlias: Users
+City: # Город предоставления услуги
+  actAs:
+    Timestampable: ~
+    Signable: ~
+    Versionable: ~
+  columns:
+    name:
+      type: string(255)
+      notnull: true
+
+Provider: # Поставщик услуг
+  actAs:
+    Timestampable: ~
+    Signable: ~
+    Versionable: ~
+  columns:
+    name:
+      type: string(255)
+      notnull: true
+    short_description:
+      type: clob
+      notnull: true
+    full_description:
+      type: clob
+      notnull: false
+    url: # сайт
+      type: string(255)
+      notnull: false
+    e_mail:
+      type: string(255)
+      notnull: false
+    business_hours: #часы работы
+      type: clob
+      notnull: true
+    address:
+      type: clob
+      notnull: true
+    city_id:
+      type: integer
+      notnull: true
+    user_id: # sfGuardUser
+      type: integer
+      notnull: false
+  relations:
+    sfGuardUser:
+      local: user_id
+      foreign: id
+    City:
+      local: city_id
+      foreign: id
+  indexes:
+
+Event: #Акция
+  actAs:
+    Timestampable: ~
+    Signable: ~
+    Versionable: ~
+  columns:
+    name:
+      type: string(255)
+      notnull: true
+    full_name:
+      type: string(255)
+      notnull: true
+    discount:
+      type: integer
+      notnull: true
+    price:
+      type: integer
+      notnull: true
+    conditions:
+      type: clob
+      notnull: true
+    description:
+      type: clob
+      notnull: true
+    event_start:
+      type: timestamp
+      notnull: true
+    event_end:
+      type: timestamp
+      notnull: true
+    sale_start:
+      type: timestamp
+      notnull: true
+    sale_end:
+      type: timestamp
+      notnull: true
+    is_active:
+      type: boolean
+      notnull: true
+      default: false
+    photo1:
+      type: string(255)
+      notnull: true
+    photo2:
+      type: string(255)
+      notnull: true
+    photo3:
+      type: string(255)
+      notnull: true
+    provider_id:
+      type: integer
+      notnull: true
+  relations:
+    Provider:
+      local: provider_id
+      foreign: id
+
+Client: # Покупатель купонов
+  actAs:
+    Timestampable: ~
+    Signable: ~
+    Versionable: ~
+  columns:
+    is_signed:
+      type: boolean
+      notnull: true
+      default: true
+    city_id:
+      type: integer
+      notnull: true
+    user_id: # sfGuardUser
+      type: integer
+      notnull: true
+  relations:
+    sfGuardUser:
+      local: user_id
+      foreign: id
+    City:
+      local: city_id
+      foreign: id
+    Likes:
+      class: Event
+      refClass: RefEventLike
+      local: user_id
+      foreign: event_id
+      foreignAlias: Clients
+  indexes:
+
+Gallery: # Галерея поставщика
+  actAs:
+    Timestampable: ~
+    Signable: ~
+    Versionable: ~
+  columns:
+    name:
+      type: string(255)
+      notnull: false
+    provider_id:
+      type: integer
+      notnull: true
+  relations:
+    Provider:
+      local: provider_id
+      foreign: id
+  indexes:
+
+Image: # Изображения для галереи поставщика
+  actAs:
+    Timestampable: ~
+    Signable: ~
+    Versionable: ~
+  columns:
+    file:
+      type: string(255)
+      notnull: true
+    gallery_id:
+      type: integer
+      notnull: true
+  relations:
+    Gallery:
+      local: gallery_id
+      foreign: id
+  indexes:
+
+Coupon: # Купон
+  actAs:
+    Timestampable: ~
+    Signable: ~
+    Versionable: ~
+  columns:
+    number:
+      type: string(255)
+      notnull: true
+    pin:
+      type: string(255)
+      notnull: true
+    is_used:
+      type: boolean
+      notnull: true
+      default: false
+    event_id:
+      type: integer
+      notnull: true
+    user_id: # sfGuardUser
+      type: integer
+      notnull: true
+  relations:
+    Event:
+      local: event_id
+      foreign: id
+      foreignAlias: Coupons
+    sfGuardUser:
+      local: user_id
+      foreign: id
+  indexes:
+
+File: # Файлы
+  actAs:
+    Timestampable: ~
+    Signable: ~
+    Versionable: ~
+  columns:
+    name:
+      type: string(255)
+      notnull: true
+    file:
+      type: string(255)
+      notnull: true
+    provider_id:
+      type: integer
+      notnull: true
+  relations:
+    Provider:
+      local: provider_id
+      foreign: id
+  indexes:
+  
+Comment: # Комментарии к акциям
+  actAs:
+    Timestampable: ~
+    Signable: ~
+    Versionable: ~
+  columns:
+    name:
+      type: clob
+      notnull: true
+    answer:
+      type: clob
+      notnull: false
+    is_active:
+      type: boolean
+      notnull: true
+      default: false
+    event_id:
+      type: integer
+      notnull: true
+    answered_by: # sfGuardUser
+      type: integer
+      notnull: false
+  relations:
+    Event:
+      local: event_id
+      foreign: id
+      foreignAlias: Comments
+    Moderator:
+      model: sfGuardUser
+      local: answered_by
+      foreign: id
+  indexes:
+  
+RefEventLike: # Лайкерсы
+  actAs:
+    Timestampable: ~
+  columns:
+    event_id:
+      type: integer
+      notnull: false
+    user_id: # sfGuardUser
+      type: integer
+      notnull: false
+  relations:
+    sfGuardUser:
+      local: user_id
+      foreign: id
+    Event:
+      local: event_id
+      foreign: id
+  indexes:
+
+RefCommentRead: # Прочитанные сообщения
+  actAs:
+    Timestampable: ~
+  columns:
+    comment_id:
+      type: integer
+      notnull: false
+    user_id: # sfGuardUser
+      type: integer
+      notnull: false
+  relations:
+    sfGuardUser:
+      local: user_id
+      foreign: id
+    Comment:
+      local: comment_id
+      foreign: id
+  indexes:
+  
+Phone: # Телефоны поставщиков
+  actAs:
+    Timestampable: ~
+    Signable: ~
+    Versionable: ~
+  columns:
+    name:
+      type: string(255)
+      notnull: true
+    provider_id:
+      type: integer
+      notnull: false
+  relations:
+    Provider:
+      local: provider_id
+      foreign: id
+  indexes:
+  
+Faq: # Вопросы и ответы
+  actAs:
+    Timestampable: ~
+    Signable: ~
+    Versionable: ~
+  columns:
+    name:
+      type: clob
+      notnull: true
+    answer:
+      type: clob
+      notnull: false
+
+Page:
+  actAs:
+    Timestampable: ~
+    Signable: ~
+    Versionable: ~
+  columns:
+    name:
+      type: string(255)
+      notnull: true
+    slug:
+      type: string(255)
+      notnull: true
+    content:
+      type: clob
+      notnull: true
