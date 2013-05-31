@@ -12,5 +12,21 @@ class FaqForm extends BaseFaqForm
 {
   public function configure()
   {
+    unset(
+      $this['created_at'], 
+      $this['created_by'],
+      $this['updated_at'], 
+      $this['updated_by'], 
+      $this['version'],
+      $this['sort']
+    ); 
+
+    $this->widgetSchema['name']->setAttribute('class', 'span8');
+    $this->widgetSchema['answer']->setAttribute('class', 'span8');
+
+    $this->widgetSchema->setLabels(array(
+      'name' => 'Вопрос',
+      'answer' => 'Ответ',
+    ));
   }
 }

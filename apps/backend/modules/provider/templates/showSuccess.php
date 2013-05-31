@@ -1,77 +1,59 @@
 <h1 class="page-header">
-  Show Provider
+  Просмотр информации о поставщике
 </h1>
 
 <div class="btn-toolbar">
   <div class="btn-group">
-    <a href="<?php echo url_for('provider/edit?id='.$provider->getId()) ?>" class="btn btn-primary">Edit</a>
+    <a href="<?php echo url_for('provider/edit?id='.$provider->getId()) ?>" class="btn btn-primary">Редактировать</a>
   </div>
   <div class="btn-group">
-    <a href="<?php echo url_for('provider/index') ?>" class="btn">Back to List</a>
+    <a href="<?php echo url_for('provider/index') ?>" class="btn">Вернуться к списку</a>
   </div>
 </div>
 
 <table class="table table-condensed table-bordered">
   <tbody>
     <tr>
-      <th scope="row" class="span3">Id:</th>
-      <td><?php echo $provider->getId() ?></td>
-    </tr>
-    <tr>
-      <th scope="row" class="span3">Name:</th>
+      <th scope="row" class="span3">Название:</th>
       <td><?php echo $provider->getName() ?></td>
     </tr>
     <tr>
-      <th scope="row" class="span3">Short description:</th>
+      <th scope="row" class="span3">Краткое описание:</th>
       <td><?php echo $provider->getShortDescription() ?></td>
     </tr>
     <tr>
-      <th scope="row" class="span3">Full description:</th>
+      <th scope="row" class="span3">Полное описание:</th>
       <td><?php echo $provider->getFullDescription() ?></td>
     </tr>
     <tr>
-      <th scope="row" class="span3">Url:</th>
+      <th scope="row" class="span3">Адрес сайта:</th>
       <td><?php echo $provider->getUrl() ?></td>
     </tr>
     <tr>
-      <th scope="row" class="span3">E mail:</th>
+      <th scope="row" class="span3">E-mail:</th>
       <td><?php echo $provider->getEMail() ?></td>
     </tr>
     <tr>
-      <th scope="row" class="span3">Business hours:</th>
+      <th scope="row" class="span3">Часы работы:</th>
       <td><?php echo $provider->getBusinessHours() ?></td>
     </tr>
     <tr>
-      <th scope="row" class="span3">Address:</th>
+      <th scope="row" class="span3">Адрес:</th>
       <td><?php echo $provider->getAddress() ?></td>
     </tr>
     <tr>
-      <th scope="row" class="span3">City:</th>
-      <td><?php echo $provider->getCityId() ?></td>
+      <th scope="row" class="span3">Город:</th>
+      <td><?php echo $provider->getCity() ?></td>
     </tr>
     <tr>
-      <th scope="row" class="span3">User:</th>
-      <td><?php echo $provider->getUserId() ?></td>
-    </tr>
-    <tr>
-      <th scope="row" class="span3">Created at:</th>
-      <td><?php echo $provider->getCreatedAt() ?></td>
-    </tr>
-    <tr>
-      <th scope="row" class="span3">Updated at:</th>
-      <td><?php echo $provider->getUpdatedAt() ?></td>
-    </tr>
-    <tr>
-      <th scope="row" class="span3">Created by:</th>
-      <td><?php echo $provider->getCreatedBy() ?></td>
-    </tr>
-    <tr>
-      <th scope="row" class="span3">Updated by:</th>
-      <td><?php echo $provider->getUpdatedBy() ?></td>
-    </tr>
-    <tr>
-      <th scope="row" class="span3">Version:</th>
-      <td><?php echo $provider->getVersion() ?></td>
+      <th scope="row" class="span3">Пользователь для личного кабинета:</th>
+      <td>
+        <?php if($provider->getUserId()): ?>
+          <a href="<?php echo url_for('provider/userEdit?uid='.$provider->getUserId().'&id='.$provider->getId()) ?>" class="btn btn-primary">Редактировать пользователя</a>
+        <?php else: ?>
+          <a href="<?php echo url_for('provider/userNew?id='.$provider->getId()) ?>" class="btn btn-primary">Создать пользователя</a>
+        <?php endif ?>
+      </td>
     </tr>
   </tbody>
 </table>

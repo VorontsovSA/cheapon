@@ -12,4 +12,24 @@
  */
 class City extends BaseCity
 {
+  public function getProviderCount()
+  {
+    $q = Doctrine_Query::create()
+      ->select('COUNT(p.id) as number_of_providers')
+      ->from('City c')
+      ->leftJoin('c.Provider p')
+      ->where('c.id = ?', $this->id);
+   
+    return $q->fetchOne()->getNumberOfProviders();
+  }
+  public function getClientCount()
+  {
+    $q = Doctrine_Query::create()
+      ->select('COUNT(p.id) as number_of_clients')
+      ->from('City c')
+      ->leftJoin('c.Client p')
+      ->where('c.id = ?', $this->id);
+   
+    return $q->fetchOne()->getNumberOfClients();
+  }
 }

@@ -100,13 +100,13 @@ Event: #Акция
       default: false
     photo1:
       type: string(255)
-      notnull: true
+      notnull: false
     photo2:
       type: string(255)
-      notnull: true
+      notnull: false
     photo3:
       type: string(255)
-      notnull: true
+      notnull: false
     provider_id:
       type: integer
       notnull: true
@@ -336,6 +336,10 @@ Faq: # Вопросы и ответы
     answer:
       type: clob
       notnull: false
+    sort:
+      type: integer
+      notnull: true
+      default: 0
 
 Page:
   actAs:

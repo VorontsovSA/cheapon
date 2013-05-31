@@ -12,11 +12,15 @@
   <thead>
     <tr>
       <th>Название</th>
+      <th>Количество поставщиков</th>
+      <th>Количество клиентов</th>
     </tr>
   </thead>
   <tbody><?php foreach ($citys as $city): ?>
     <tr>
-      <td><a href="<?php echo url_for('city/show?id='.$city->getId()) ?>"><?php echo $city->getName() ?></a></td>
+      <td><a href="<?php echo url_for('city/edit?id='.$city->getId()) ?>"><?php echo $city->getName() ?></a></td>
+      <td><span class="badge badge-info"><?php echo $city->getProviderCount() ?></span></td>
+      <td><span class="badge badge-info"><?php echo $city->getClientCount() ?></span></td>
     </tr>
   <?php endforeach; ?></tbody>
 </table>

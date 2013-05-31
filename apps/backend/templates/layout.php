@@ -33,7 +33,7 @@
             'Клиенты' => array(
               'credentials' => $sf_user->hasCredential('can_view_clients'),
               'isActive' => $sf_context->getModuleName() == 'contractors',
-              'href' => url_for('clients/index'),
+              'href' => url_for('client/index'),
             ),
             'Вопросы и ответы' => array(
               'credentials' => $sf_user->hasCredential('can_view_faq'),
@@ -64,10 +64,10 @@
           <li id="fat-menu" class="dropdown">
             <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown"><?php echo $sf_user->getGuardUser()->getFirstName() ?> <?php echo $sf_user->getGuardUser()->getLastName() ?><b class="caret"></b></a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
-              <li><a tabindex="-1" href="#">История работы</a></li>
-              <li><a tabindex="-1" href="<?php echo url_for('admin/changepassword?id='.$sf_user->getGuardUser()->getId()) ?>">Изменить пароль</a></li>
+              <li><a href="<?php echo url_for('personal/profile') ?>">Редактировать профиль</a></li>
+              <li><a href="<?php echo url_for('personal/password') ?>">Изменить пароль</a></li>
               <li class="divider"></li>
-              <li><a tabindex="-1" href="<?php echo url_for('@sf_guard_signout') ?>">Выход</a></li>
+              <li><a href="<?php echo url_for('@sf_guard_signout') ?>">Выход</a></li>
             </ul>
           </li>
         </ul>
@@ -76,13 +76,9 @@
     </div>
   </div>
 
-  <?php
-    // Перенести в app.yml
-    $flashes = sfConfig::get('app_flashes');
-  ?>
   <?php if ($sf_user->hasFlash('flash') and true == ($flash = $sf_user->getFlash('flash'))): ?>
-    <div class="alert alert-<?php echo $flashes[$flash]['type'] ?>">
-      <?php echo $flashes[$flash]['message'] ?>
+    <div class="alert alert-<?php echo $flash['type'] ?>">
+      <?php echo $flash['message'] ?>
       <button type="button" class="close" data-dismiss="alert">×</button>
     </div>
   <?php endif ?>

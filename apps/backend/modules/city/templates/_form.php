@@ -17,7 +17,7 @@
     <a href="<?php echo url_for('city/index') ?>" class="btn">Вернуться к списку</a>
 
     <?php if (!$form->getObject()->isNew()): ?>
-      <?php echo link_to('Delete', 'city/delete?id='.$form->getObject()->getId(), array(
+      <?php echo link_to('Удалить', 'city/delete?id='.$form->getObject()->getId(), array(
         'method' => 'delete',
         'confirm' => 'Вы уверены?',
         'class' => 'btn btn-warning pull-right',

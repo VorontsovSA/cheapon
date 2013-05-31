@@ -63,7 +63,10 @@ class cityActions extends sfActions
 
     $this->forward404Unless($city = Doctrine_Core::getTable('City')->find(array($request->getParameter('id'))), sprintf('Object city does not exist (%s).', $request->getParameter('id')));
     $city->delete();
-
+    $this->getUser()->setFlash('flash', array(
+          'type' => 'success',
+          'message' => 'Город успешно удален.',
+        ));
     $this->redirect('city/index');
   }
 
@@ -72,8 +75,11 @@ class cityActions extends sfActions
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid()) {
       $city = $form->save();
-
-      $this->redirect('city/edit?id='.$city->getId());
+      $this->getUser()->setFlash('flash', array(
+          'type' => 'success',
+          'message' => 'Данные города сохранены.',
+        ));
+      $this->redirect('city/index');
     }
   }
 }

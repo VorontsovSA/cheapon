@@ -21,6 +21,9 @@ class ProviderForm extends BaseProviderForm
       $this['version']
     );
 
+    $this->widgetSchema['short_description']->setAttribute('class', 'wisiwyg-editor');
+    $this->widgetSchema['full_description']->setAttribute('class', 'wisiwyg-editor');
+
     $this->widgetSchema->setLabels(array(
       'name' => 'Название поставщика',
       'short_description' => 'Краткое описание',

@@ -12,5 +12,23 @@ class PageForm extends BasePageForm
 {
   public function configure()
   {
+    unset(
+      $this['created_at'], 
+      $this['created_by'],
+      $this['updated_at'], 
+      $this['updated_by'], 
+      $this['version']
+    );
+    
+    // $this->widgetSchema['name']->setAttribute('readonly', 'readonly');
+    // $this->widgetSchema['slug']->setAttribute('readonly', 'readonly');
+    
+    $this->widgetSchema['content']->setAttribute('class', 'wisiwyg-editor');
+    
+    $this->widgetSchema->setLabels(array(
+      'name' => 'Название раздела',
+      'slug' => 'Имя в адресе',
+      'content' => 'Контент',
+    ));
   }
 }

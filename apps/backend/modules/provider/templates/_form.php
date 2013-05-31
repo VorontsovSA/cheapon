@@ -17,7 +17,7 @@
     <a href="<?php echo url_for('provider/index') ?>" class="btn">Вернуться к списку</a>
 
     <?php if (!$form->getObject()->isNew()): ?>
-      <?php echo link_to('Delete', 'provider/delete?id='.$form->getObject()->getId(), array(
+      <?php echo link_to('Удалить', 'provider/delete?id='.$form->getObject()->getId(), array(
         'method' => 'delete',
         'confirm' => 'Вы уверены?',
         'class' => 'btn btn-warning pull-right',

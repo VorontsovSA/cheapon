@@ -18,7 +18,7 @@
   <tbody><?php foreach ($providers as $provider): ?>
     <tr>
       <td><a href="<?php echo url_for('provider/show?id='.$provider->getId()) ?>"><?php echo $provider->getName() ?></a></td>
-      <td><?php echo $provider->getCityId() ?></td>
+      <td><?php echo $provider->getCity() ?></td>
     </tr>
   <?php endforeach; ?></tbody>
 </table>

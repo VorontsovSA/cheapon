@@ -16,4 +16,9 @@ class FaqTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Faq');
     }
+    
+    public function getMaxSort()
+    {
+        return Doctrine_Core::getTable('Faq')->createQuery('q')->select('max(q.sort)')->fetchOne()->getMax();
+    }
 }

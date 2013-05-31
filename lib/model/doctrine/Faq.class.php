@@ -12,4 +12,29 @@
  */
 class Faq extends BaseFaq
 {
+  public function save(Doctrine_Connection $conn = null)
+  {
+    if ($this->isNew())
+    {
+      $this->setSort(Doctrine_Core::getTable('Faq')->getMaxSort() + 1);
+    }
+ 
+    return parent::save($conn);
+  }
+  
+  public function delete(Doctrine_Connection $conn = null)
+  {
+    $questions = Doctrine_Query::create()
+      ->from('Faq f')
+      ->where('f.sort > ?', $this->getSort())
+      ->execute();
+ 
+    foreach($questions as $question)
+    {
+      $question->setSort($question->getSort() - 1);
+      $question->save();
+    }
+ 
+    return parent::delete($conn);
+  }
 }

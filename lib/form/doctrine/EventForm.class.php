@@ -25,7 +25,55 @@ class EventForm extends BaseEventForm
     $this->setWidget('event_end',   new bsWidgetFormDate());
     $this->setWidget('sale_start',  new bsWidgetFormDate());
     $this->setWidget('sale_end',    new bsWidgetFormDate());
-
+    
+    $this->widgetSchema['conditions']->setAttribute('class', 'wisiwyg-editor');
+    $this->widgetSchema['description']->setAttribute('class', 'wisiwyg-editor');
+    
+    $this->widgetSchema['photo1'] = new sfWidgetFormInputFileEditable(array(
+      'file_src'  => ($this->getObject()->getPhoto1()) ? '/uploads/eventimages/'.$this->getObject()->getPhoto1() : '/uploads/eventimages/noimage.gif',
+      'is_image'  => true,
+      'edit_mode' => true,
+      'template'  => '<div>%file%<br />%input%</div>',
+    ));
+    
+    $this->setValidator('photo1', new sfValidatorThumbnailFile(array(
+      'width' => 330,
+      'height' => 290,
+      'crop' => true,
+      'required' => false,
+      'path'     => sfConfig::get('sf_upload_dir').'/eventimages',
+    )));
+    
+    $this->widgetSchema['photo2'] = new sfWidgetFormInputFileEditable(array(
+      'file_src'  => ($this->getObject()->getPhoto2()) ? '/uploads/eventimages/'.$this->getObject()->getPhoto2() : '/uploads/eventimages/noimage.gif',
+      'is_image'  => true,
+      'edit_mode' => true,
+      'template'  => '<div>%file%<br />%input%</div>',
+    ));
+    
+    $this->setValidator('photo2', new sfValidatorThumbnailFile(array(
+      'width' => 370,
+      'height' => 290,
+      'crop' => true,
+      'required' => false,
+      'path'     => sfConfig::get('sf_upload_dir').'/eventimages',
+    )));
+    
+    $this->widgetSchema['photo3'] = new sfWidgetFormInputFileEditable(array(
+      'file_src'  => ($this->getObject()->getPhoto3()) ? '/uploads/eventimages/'.$this->getObject()->getPhoto3() : '/uploads/eventimages/noimage.gif',
+      'is_image'  => true,
+      'edit_mode' => true,
+      'template'  => '<div>%file%<br />%input%</div>',
+    ));
+    
+    $this->setValidator('photo3', new sfValidatorThumbnailFile(array(
+      'width' => 370,
+      'height' => 290,
+      'crop' => true,
+      'required' => false,
+      'path'     => sfConfig::get('sf_upload_dir').'/eventimages',
+    )));
+    
     $this->widgetSchema->setLabels(array(
       'name' => 'Название акции',
       'full_name' => 'Полное название',
@@ -43,5 +91,11 @@ class EventForm extends BaseEventForm
       'photo3' => 'Фото из описания №2',
       'provider_id' => 'Поставщик акции'
     ));
+  }
+}
+
+class sfValidatedFileCustom extends sfValidatedFile {
+  public function generateFilename() {
+    return uniqid() . $this->getExtension($this->getOriginalExtension);
   }
 }
