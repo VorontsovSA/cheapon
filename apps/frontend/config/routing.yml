@@ -6,6 +6,10 @@ homepage:
   url:   /
   param: { module: default, action: index }
 
+page:
+  url:   /page/:slug
+  param: { module: page, action: show }
+
 # generic rules
 # please, remove them by adding more specific rules
 default_index:

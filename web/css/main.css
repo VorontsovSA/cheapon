@@ -5,6 +5,9 @@ html {
 body {
   font-family: 'PT Sans', sans-serif;
   font-weight: bold;
+  font-size: 17px;
+  line-height: 25px;
+  color: #7F8B97;
 }
 
 .muted {
@@ -19,10 +22,14 @@ body {
   display: inline-block;
 }
 
+.striped-head,
+.superheader {
+  color: #646C7B;
+}
+
 .striped-head {
   text-align: center;
   background: transparent url(/img/striped-head-bg.png) center repeat-x;
-  color: #646C7B;
 }
   .striped-head > :first-child {
     position: relative;
@@ -107,11 +114,12 @@ body {
       }
       .mega-basket .basket {
         display: inline-block;
-        height: 53px;
+        height: 49px;
         width: 50%;
         background: transparent url(/img/basket-bg.png) center no-repeat;
         font-size: 14px;
         color: #fff;
+        line-height: 20px;
       }
         .mega-basket .basket .counter {
           display: inline-block;
@@ -120,13 +128,13 @@ body {
           padding: 0 7px;
           position: relative;
           left: 24px;
-          top: 8px;
+          top: 6px;
         }
 
 #content {
   background: #ECF0F5 url(/img/body-bg.png) top left repeat;
   padding-bottom: 3em;
-  padding-top: 6em;
+  padding-top: 5em;
 }
 
 .nav-pills > li {
@@ -162,13 +170,35 @@ body {
       position: absolute;
       bottom: 60px;
       padding: 15px;
+      padding-bottom: 8px;
       letter-spacing: -1px;
       overflow: hidden;
+      line-height: 24px;
     }
+      .mega-cells .cell .description .description-short,
+      .mega-cells .cell .description .description-full {
+        overflow: hidden;
+        text-shadow:
+          0px 0px 6px rgb(19,27,34),
+          0px 0px 6px rgb(19,27,34)
+        ;
+
+        -moz-transition: all 1s ease;
+        -ms-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        -webkit-transition: all 1s ease;
+        transition: all 1s ease;
+      }
+      .mega-cells .cell .description .description-full {
+        max-height: 0;
+      }
+      .mega-cells .cell:hover .description-full {
+        max-height: 500px;
+      }
       .mega-cells .cell .description .counters {
         font-size: 14px;
         letter-spacing: -1px;
-        margin-top: 25px;
+        margin-top: 20px;
       }
         .mega-cells .cell .description .counters:before {
           content: "";
@@ -183,7 +213,7 @@ body {
           display: inline-block;
           background: transparent url(/img/counters-eta-icon.png) left center no-repeat;
           padding-left: 25px;
-          line-height: 25px;
+          line-height: 27px;
           margin-left: 45px;
         }
         .mega-cells .cell .description .counters .eta {
@@ -205,13 +235,14 @@ body {
       font-size: 31px;
       text-align: center;
       margin-left: 0;
+      text-shadow: 0px 1px 1px #000;
     }
       .mega-cells .cell .buy-me-faster>div {
         line-height: 65px;
         letter-spacing: -4px;
       }
       .mega-cells .cell .buy-me-faster>div:first-child {
-        margin-left: 0;
+        margin-left: 3px;
       }
       .mega-cells .cell .buy-me-faster .discount {
         position: relative;
@@ -220,7 +251,7 @@ body {
           content: "право на скидку";
           font-size: 13px;
           position: absolute;
-          top: -22px;
+          top: -23px;
           left: 7px;
           color: #B0DFD5;
           letter-spacing: normal;
@@ -229,27 +260,28 @@ body {
           font-size: 19px;
           position: relative;
           top: -8px;
-          left: 5px;
+          left: 6px;
         }
       .mega-cells .cell .buy-me-faster .price {
       }
         .mega-cells .cell .buy-me-faster .price .currency {
           font-size: 15px;
           position: relative;
-          top: -10px;
-          left: 7px;
+          top: -11px;
+          left: 8px;
           letter-spacing: normal;
         }
       .mega-cells .cell .buy-me-faster .buy {
         font-size: 17px;
         letter-spacing: normal;
         line-height: 57px;
-        margin-left: 10px;
+        margin-left: 2px;
+        width: 105px;
       }
 
 #footer {
   padding-top: 3em;
-  padding-bottom: 20em;
+  padding-bottom: 15em;
 }
   .footer-navs {
     margin-top: 2em;
@@ -316,8 +348,11 @@ body {
   background-color: #fff;
   margin-top: 3em;
   padding: 50px 35px;
-
-  /* FIXME: move to body and check all the makeup */
-  font-size: 17px;
-  color: #7F8B97;
 }
+
+  .page .striped-head {
+    margin-top: 2em;
+  }
+  .page .striped-head:first-child {
+    margin-top: 0;
+  }

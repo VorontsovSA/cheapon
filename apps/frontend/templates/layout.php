@@ -52,7 +52,7 @@
         <div class="head-nav clearfix">
           <div class="pull-left">
             <ul class="nav nav-pills">
-              <li class="active"><a href="">Текущие акции</a></li>
+              <li<?php if ($sf_context->getModuleName() == 'default') echo ' class="active"' ?>><a href="<?php echo url_for('@homepage') ?>">Текущие акции</a></li>
               <li><a href="">Прошедшие акции</a></li>
             </ul>
           </div>
@@ -67,7 +67,7 @@
 
           <div class="pull-right">
             <ul class="nav nav-pills">
-              <li><a href="">Как это работает</a></li>
+              <li<?php if ($sf_context->getModuleName() == 'page' and $sf_request->getParameter('slug') == 'how-it-works') echo ' class="active"' ?>><a href="<?php echo url_for('@page?slug=how-it-works') ?>">Как это работает</a></li>
               <li><a href="">Для бизнеса</a></li>
               <li><a href="" class="btn m0">Вход</a></li>
             </ul>
@@ -95,16 +95,16 @@
       <div class="row footer-navs">
         <ul class="span6 nav nav-list">
           <li class="nav-header">Что такое «CHEAPON»</li>
-          <li><a href="">Как это работает</a></li>
-          <li><a href="">О компании</a></li>
-          <li><a href="">Вакансии</a></li>
+          <li><a href="<?php echo url_for('@page?slug=how-it-works') ?>">Как это работает</a></li>
+          <li><a href="<?php echo url_for('@page?slug=about') ?>">О компании</a></li>
+          <li><a href="<?php echo url_for('@page?slug=we-are-hiring') ?>">Вакансии</a></li>
           <li><a href="">Контакты и реквизиты</a></li>
         </ul>
 
         <ul class="span6 nav nav-list">
           <li class="nav-header">Для бизнеса</li>
-          <li><a href="">Привлечение клиентов</a></li>
-          <li><a href="">Предложить свое заведение</a></li>
+          <li><a href="<?php echo url_for('@page?slug=client-attraction') ?>">Привлечение клиентов</a></li>
+          <li><a href="<?php echo url_for('@page?slug=offering') ?>">Предложить свое заведение</a></li>
         </ul>
 
         <ul class="span6 nav nav-list">
