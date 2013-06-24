@@ -16,6 +16,20 @@ City: # Город предоставления услуги
       type: string(255)
       notnull: true
 
+Category: # Категория акции
+  actAs:
+    Timestampable: ~
+    Signable: ~
+    Versionable: ~
+  columns:
+    name:
+      type: string(255)
+      notnull: true
+    sort:
+      type: integer
+      notnull: true
+      default: 0
+
 Provider: # Поставщик услуг
   actAs:
     Timestampable: ~
@@ -110,9 +124,15 @@ Event: #Акция
     provider_id:
       type: integer
       notnull: true
+    category_id:
+      type: integer
+      notnull: true
   relations:
     Provider:
       local: provider_id
+      foreign: id
+    Category:
+      local: category_id
       foreign: id
 
 Client: # Покупатель купонов

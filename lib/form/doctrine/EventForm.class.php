@@ -89,7 +89,8 @@ class EventForm extends BaseEventForm
       'photo1' => 'Фото на главной',
       'photo2' => 'Фото из описания №1',
       'photo3' => 'Фото из описания №2',
-      'provider_id' => 'Поставщик акции'
+      'provider_id' => 'Поставщик акции',
+      'category_id' => 'Категория'
     ));
   }
 }
