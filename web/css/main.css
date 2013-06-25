@@ -171,7 +171,6 @@ body {
       bottom: 60px;
       padding: 15px;
       padding-bottom: 8px;
-      letter-spacing: -1px;
       overflow: hidden;
       line-height: 24px;
     }
@@ -349,10 +348,127 @@ body {
   margin-top: 3em;
   padding: 50px 35px;
 }
-
+.page.with-grafon-zbs {
+  padding-top: 382px;
+}
   .page .striped-head {
     margin-top: 2em;
   }
   .page .striped-head:first-child {
     margin-top: 0;
   }
+  .grafon-zbs {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-repeat: no-repeat;
+  }
+    .grafon-zbs .second-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-position: right top;
+    }
+    .grafon-zbs .take-the-last {
+      background: transparent url(/img/take-the-last-bg.png) center no-repeat;
+      height: 110px;
+      width: 110px;
+      position: absolute;
+      left: -25px;
+      top: -35px;
+      line-height: 1em;
+      text-align: center;
+      color: #fff;
+      text-shadow: 0px 1px 1px #000;
+    }
+      .grafon-zbs .take-the-last span {
+        display: block;
+        padding-top: 2.3em;
+      }
+    .grafon-zbs .centrota {
+      width: 320px;
+      height: 311px;
+      background: transparent url(/img/grafon-zbs-centrota-bg.png) center no-repeat;
+      position: absolute;
+      left: 35%;
+      top: -21px;
+      text-align: center;
+      font-size: 50px;
+      line-height: 1.7em;
+    }
+    .grafon-zbs .nizota {
+      background: transparent url(/img/grafon-zbs-nizota-bg.png) left top repeat-x;
+      height: 90px;
+      margin-top: 290px;
+      padding-top: 15px;
+      padding-bottom: 18px;
+      font-size: 25px;
+      color: #fff;
+    }
+      .grafon-zbs .nizota div {
+        border-right: 1px solid #3BAF99;
+        float: left;
+        position: relative;
+        height: 47px;
+        padding-top: 9px;
+        background: transparent url(/img/counters-big-eta-icon.png) left center no-repeat;
+      }
+      .grafon-zbs .nizota .eta {
+        width: 237px;
+        margin-left: 84px;
+        padding-left: 51px;
+      }
+        .grafon-zbs .nizota .eta:after {
+          content: "до конца продажи купона";
+        }
+      .grafon-zbs .nizota .comments {
+        width: 181px;
+        margin-left: 80px;
+        padding-left: 54px;
+        background-image: url(/img/counters-big-comments-icon.png);
+      }
+        .grafon-zbs .nizota .comments:after {
+          content: "купона продано";
+        }
+      .grafon-zbs .nizota .likes {
+        margin-left: 120px;
+        padding-left: 56px;
+        background-image: url(/img/counters-big-likes-icon.png);
+        border-right: none;
+      }
+        .grafon-zbs .nizota .likes:after {
+          content: "мне нравится";
+        }
+        .grafon-zbs .nizota .eta:after,
+        .grafon-zbs .nizota .comments:after,
+        .grafon-zbs .nizota .likes:after {
+          font-size: 17px;
+          color: #B0DFD5;
+          display: block;
+          position: relative;
+          top: -6px;
+        }
+
+.terms-list {
+  font-size: 15px;
+}
+  .terms-list div {
+    position: relative;
+  }
+    .terms-list ul {
+      list-style: none;
+      margin-left: 30px;
+    }
+      .terms-list li {
+        margin-top: 1em;
+      }
+      .terms-list li:first-child {
+        margin-top: 0;
+      }
+      .terms-list li:before {
+        content: "— ";
+        position: absolute;
+        left: 0;
+      }
