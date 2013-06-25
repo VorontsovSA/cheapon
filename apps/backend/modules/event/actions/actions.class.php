@@ -77,4 +77,65 @@ class eventActions extends sfActions
       $this->redirect('event/edit?id='.$event->getId());
     }
   }
+  
+  public function executeCategories(sfWebRequest $request)
+  {
+    $this->categories = Doctrine_Query::create()
+      ->from('Category c')
+      ->execute()
+    ;
+  }
+
+  public function executeNewcategory(sfWebRequest $request)
+  {
+    $this->form = new CategoryForm();
+  }
+
+  public function executeCreatecategory(sfWebRequest $request)
+  {
+    $this->forward404Unless($request->isMethod(sfRequest::POST));
+
+    $this->form = new CategoryForm();
+
+    $this->processCategoryForm($request, $this->form);
+
+    $this->setTemplate('newcategories');
+  }
+
+  public function executeEditcategory(sfWebRequest $request)
+  {
+    $this->forward404Unless($category = Doctrine_Core::getTable('Category')->find(array($request->getParameter('id'))), sprintf('Object category does not exist (%s).', $request->getParameter('id')));
+    $this->form = new CategoryForm($category);
+  }
+
+  public function executeUpdatecategory(sfWebRequest $request)
+  {
+    $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
+    $this->forward404Unless($category = Doctrine_Core::getTable('Category')->find(array($request->getParameter('id'))), sprintf('Object category does not exist (%s).', $request->getParameter('id')));
+    $this->form = new CategoryForm($category);
+
+    $this->processCategoryForm($request, $this->form);
+
+    $this->setTemplate('editcategories');
+  }
+
+  public function executeDeletecategory(sfWebRequest $request)
+  {
+    $request->checkCSRFProtection();
+
+    $this->forward404Unless($category = Doctrine_Core::getTable('Category')->find(array($request->getParameter('id'))), sprintf('Object category does not exist (%s).', $request->getParameter('id')));
+    $category->delete();
+
+    $this->redirect('event/categories');
+  }
+
+  protected function processCategoryForm(sfWebRequest $request, sfForm $form)
+  {
+    $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+    if ($form->isValid()) {
+      $event = $form->save();
+
+      $this->redirect('event/editcategory?id='.$event->getId());
+    }
+  }
 }
