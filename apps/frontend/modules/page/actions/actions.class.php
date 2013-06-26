@@ -15,4 +15,13 @@ class pageActions extends sfActions
     $this->page = Doctrine_Core::getTable('Page')->findOneBySlug($request->getParameter('slug'));
     $this->forward404Unless($this->page);
   }
+
+  public function executeFaq(sfWebRequest $request)
+  {
+    $this->faqs = Doctrine_Query::create()
+      ->from('Faq f')
+      ->addOrderBy('f.sort asc')
+      ->execute()
+    ;
+  }
 }

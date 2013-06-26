@@ -109,7 +109,7 @@
 
         <ul class="span6 nav nav-list">
           <li class="nav-header">Для клиентов</li>
-          <li><a href="">Вопросы и ответы</a></li>
+          <li><a href="<?php echo url_for('@faq') ?>">Вопросы и ответы</a></li>
           <li><a href="">Пользовательское соглашение</a></li>
         </ul>
       </div>

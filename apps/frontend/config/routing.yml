@@ -6,6 +6,10 @@ homepage:
   url:   /
   param: { module: default, action: index }
 
+faq:
+  url:   /page/faq
+  param: { module: page, action: faq }
+
 page:
   url:   /page/:slug
   param: { module: page, action: show }

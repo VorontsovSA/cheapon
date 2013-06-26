@@ -355,11 +355,11 @@ Faq: # Вопросы и ответы
       notnull: true
     answer:
       type: clob
-      notnull: false
+      notnull: true
     sort:
       type: integer
-      notnull: true
       default: 0
+      notnull: true
 
 Page:
   actAs:
