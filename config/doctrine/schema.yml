@@ -15,6 +15,10 @@ City: # Город предоставления услуги
     name:
       type: string(255)
       notnull: true
+    slug:
+      type: string(32)
+      default: vladivostok
+      notnull: true
 
 Category: # Категория акции
   actAs:
@@ -361,7 +365,7 @@ Faq: # Вопросы и ответы
       default: 0
       notnull: true
 
-Page:
+Page: # Текстовая страничка
   actAs:
     Timestampable: ~
     Signable: ~
@@ -374,5 +378,19 @@ Page:
       type: string(255)
       notnull: true
     content:
+      type: clob
+      notnull: true
+
+Feedback: # Обратная связь
+  actAs:
+    Timestampable: ~
+  columns:
+    name:
+      type: string(255)
+      notnull: true
+    email:
+      type: string(255)
+      notnull: true
+    message:
       type: clob
       notnull: true

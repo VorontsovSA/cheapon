@@ -28,7 +28,7 @@ default:
     - choosen.jquery.js
     - tiny_mce/tiny_mce.js
     - jquery.tablesorter.js
-    - main.js
+    - mceinit.js
 
   has_layout:     true
   layout:         layout

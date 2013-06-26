@@ -98,7 +98,7 @@
           <li><a href="<?php echo url_for('@page?slug=how-it-works') ?>">Как это работает</a></li>
           <li><a href="<?php echo url_for('@page?slug=about') ?>">О компании</a></li>
           <li><a href="<?php echo url_for('@page?slug=we-are-hiring') ?>">Вакансии</a></li>
-          <li><a href="">Контакты и реквизиты</a></li>
+          <li><a href="<?php echo url_for('@feedback') ?>">Контакты и реквизиты</a></li>
         </ul>
 
         <ul class="span6 nav nav-list">
@@ -110,7 +110,7 @@
         <ul class="span6 nav nav-list">
           <li class="nav-header">Для клиентов</li>
           <li><a href="<?php echo url_for('@faq') ?>">Вопросы и ответы</a></li>
-          <li><a href="">Пользовательское соглашение</a></li>
+          <li><a href="<?php echo url_for('@page?slug=user-agreement') ?>">Пользовательское соглашение</a></li>
         </ul>
       </div>
 

@@ -6,6 +6,10 @@ homepage:
   url:   /
   param: { module: default, action: index }
 
+feedback:
+  url:   /page/contacts
+  param: { module: feedback, action: new }
+
 faq:
   url:   /page/faq
   param: { module: page, action: faq }
