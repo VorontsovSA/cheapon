@@ -16,4 +16,34 @@ class CityTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('City');
     }
+
+    public static function getDefaultCity()
+    {
+      return Doctrine_Query::create()
+        ->from('City c')
+        ->addWhere('c.is_default = ?', true)
+        ->limit(1)
+        ->fetchOne()
+      ;
+    }
+
+    public static function findOneBySlug($slug)
+    {
+      return Doctrine_Query::create()
+        ->from('City c')
+        ->addWhere('c.slug = ?', $slug)
+        ->limit(1)
+        ->fetchOne()
+      ;
+    }
+
+    public static function findOneByName($name)
+    {
+      return Doctrine_Query::create()
+        ->from('City c')
+        ->addWhere('c.name = ?', $name)
+        ->limit(1)
+        ->fetchOne()
+      ;
+    }
 }

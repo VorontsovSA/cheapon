@@ -6,6 +6,7 @@ sfGuardUser:
       local: user_id
       foreign: comment_id
       foreignAlias: Users
+
 City: # Город предоставления услуги
   actAs:
     Timestampable: ~
@@ -19,6 +20,10 @@ City: # Город предоставления услуги
       type: string(32)
       default: vladivostok
       notnull: true
+    is_default:
+      type: boolean
+      default: false
+      notnull: true
 
 Category: # Категория акции
   actAs:
@@ -31,8 +36,8 @@ Category: # Категория акции
       notnull: true
     sort:
       type: integer
-      notnull: true
       default: 0
+      notnull: true
 
 Provider: # Поставщик услуг
   actAs:
@@ -74,7 +79,6 @@ Provider: # Поставщик услуг
     City:
       local: city_id
       foreign: id
-  indexes:
 
 Event: #Акция
   actAs:
@@ -168,7 +172,6 @@ Client: # Покупатель купонов
       local: user_id
       foreign: event_id
       foreignAlias: Clients
-  indexes:
 
 Gallery: # Галерея поставщика
   actAs:
@@ -186,7 +189,6 @@ Gallery: # Галерея поставщика
     Provider:
       local: provider_id
       foreign: id
-  indexes:
 
 Image: # Изображения для галереи поставщика
   actAs:
@@ -204,7 +206,6 @@ Image: # Изображения для галереи поставщика
     Gallery:
       local: gallery_id
       foreign: id
-  indexes:
 
 Coupon: # Купон
   actAs:
@@ -236,7 +237,6 @@ Coupon: # Купон
     sfGuardUser:
       local: user_id
       foreign: id
-  indexes:
 
 File: # Файлы
   actAs:
@@ -257,7 +257,6 @@ File: # Файлы
     Provider:
       local: provider_id
       foreign: id
-  indexes:
   
 Comment: # Комментарии к акциям
   actAs:
@@ -290,7 +289,6 @@ Comment: # Комментарии к акциям
       model: sfGuardUser
       local: answered_by
       foreign: id
-  indexes:
   
 RefEventLike: # Лайкерсы
   actAs:
@@ -309,7 +307,6 @@ RefEventLike: # Лайкерсы
     Event:
       local: event_id
       foreign: id
-  indexes:
 
 RefCommentRead: # Прочитанные сообщения
   actAs:
@@ -328,7 +325,6 @@ RefCommentRead: # Прочитанные сообщения
     Comment:
       local: comment_id
       foreign: id
-  indexes:
   
 Phone: # Телефоны поставщиков
   actAs:
@@ -346,7 +342,6 @@ Phone: # Телефоны поставщиков
     Provider:
       local: provider_id
       foreign: id
-  indexes:
   
 Faq: # Вопросы и ответы
   actAs:

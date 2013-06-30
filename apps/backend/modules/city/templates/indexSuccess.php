@@ -14,6 +14,7 @@
       <th>Название</th>
       <th>Количество поставщиков</th>
       <th>Количество клиентов</th>
+      <th>Дефолтный?</th>
     </tr>
   </thead>
   <tbody><?php foreach ($citys as $city): ?>
@@ -21,6 +22,7 @@
       <td><a href="<?php echo url_for('city/edit?id='.$city->getId()) ?>"><?php echo $city->getName() ?></a></td>
       <td><span class="badge badge-info"><?php echo $city->getProviderCount() ?></span></td>
       <td><span class="badge badge-info"><?php echo $city->getClientCount() ?></span></td>
+      <td><?php echo $city->getIsDefault() ? '<span class="icon icon-ok"></span>' : '' ?></td>
     </tr>
   <?php endforeach; ?></tbody>
 </table>

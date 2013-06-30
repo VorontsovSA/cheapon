@@ -58,7 +58,7 @@
           </div>
 
           <div class="mega-basket">
-            <a href="" class="city-chooser">Владивосток</a>
+            <a href="" class="city-chooser" title="<?php echo $sf_user->getCity() ?>">Владивосток</a>
             <a href="<?php echo url_for('@homepage') ?>" class="logo hide-text" title="На главную страницу">Cheapon</a>
             <a href="" class="basket" onclick="$(this).find('.counter').text(Math.round(Math.random()*10+3)); return false">
               <span class="counter img-circle">0</span>
