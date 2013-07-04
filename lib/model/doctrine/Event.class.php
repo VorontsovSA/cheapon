@@ -22,6 +22,7 @@ class Event extends BaseEvent
    
     return $q->fetchOne()->getNumberOfCoupons();
   }
+
   public function getCommentsCount()
   {
     $q = Doctrine_Query::create()
@@ -32,6 +33,7 @@ class Event extends BaseEvent
    
     return $q->fetchOne()->getNumberOfComments();
   }
+
   public function getReadCount($user_id)
   {
     $q = Doctrine_Query::create()
@@ -42,5 +44,15 @@ class Event extends BaseEvent
       ->andWhere('c.event_id = ?', $this->id);
    
     return $q->fetchOne()->getNumberOfComments();
+  }
+
+  public function getETA()
+  {
+    return 'DUMMY ETA';
+  }
+
+  public function getLikesCount()
+  {
+    return 'DUMMY';
   }
 }

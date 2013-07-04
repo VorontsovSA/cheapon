@@ -30,6 +30,11 @@
       'isActive' => $sf_context->getModuleName() == 'page',
       'href' => url_for('page/index'),
     ),
+    'Категории акций' => array(
+      'credentials' => $sf_user->hasCredential('can_view_categories'),
+      'isActive' => $sf_context->getModuleName() == 'category',
+      'href' => url_for('category/index'),
+    ),
   );
 ?>
 <ul class="nav">

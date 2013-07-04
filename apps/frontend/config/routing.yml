@@ -1,10 +1,18 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
-# default rules
+past-events:
+  url:   /past-events/:category
+  param: { module: event, action: past, category: all }
+
 homepage:
-  url:   /
-  param: { module: default, action: index }
+  url:   /:category
+  param: { module: event, action: index, category: all }
+
+show-event:
+  url:   /event/show/:id
+  param: { module: event, action: show }
+  requirements: { id: \d+ }
 
 feedback:
   url:   /page/contacts

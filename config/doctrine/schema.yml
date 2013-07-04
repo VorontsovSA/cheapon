@@ -34,6 +34,10 @@ Category: # Категория акции
     name:
       type: string(255)
       notnull: true
+    slug:
+      type: string(64)
+      default: ""
+      notnull: true
     sort:
       type: integer
       default: 0
