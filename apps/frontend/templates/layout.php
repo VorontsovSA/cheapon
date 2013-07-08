@@ -15,55 +15,34 @@
 </head>
 
 <body>
-  <div class="all-the-headers">
-    <div id="login-bar" class="hide">
-      <div class="container">
-        <form action="" class="form-inline">
-          <input type="email" name="" id="" placeholder="Эл. почта" />
-          <input type="password" name="" id="" placeholder="Пароль" />
-          <button type="submit" class="btn">Войти</button>
-          <a href="">Регистрация</a>
-        </form>
-
-        <div class="login-helpers">
-          <a href="" class="btn btn-facebook">Войти</a>
-          <a href="" class="btn btn-vk">Войти</a>
-          <a href="#" class="btn btn-circle"><i class="icon icon-plus"></i></a>
+  <div id="header">
+    <div class="container">
+      <div class="head-nav clearfix">
+        <div class="pull-left">
+          <ul class="nav nav-pills">
+            <li <?php if ($sf_context->getRouting()->getCurrentRouteName() == 'homepage') echo ' class="active"' ?>>
+              <a href="<?php echo url_for('@homepage') ?>">Текущие акции</a>
+            </li>
+            <li <?php if ($sf_context->getRouting()->getCurrentRouteName() == 'past-events') echo ' class="active"' ?>>
+              <a href="<?php echo url_for('@past-events') ?>">Прошедшие акции</a>
+            </li>
+          </ul>
         </div>
 
-        <a href="#" class="btn-closer">×</a>
-      </div>
-    </div>
+        <div class="mega-basket">
+          <a href="<?php echo url_for('city/modal') ?>" class="city-chooser" title="<?php echo $sf_user->getCity() ?>" data-toggle="modal" data-target="#city-chooser-modal">Владивосток</a>
+          <a href="<?php echo url_for('@homepage') ?>" class="logo hide-text" title="На главную страницу">Cheapon</a>
+          <a href="" class="basket" onclick="$(this).find('.counter').text(Math.round(Math.random()*10+3)); return false">
+            <span class="counter img-circle">0</span>
+          </a>
+        </div>
 
-    <div id="header">
-      <div class="container">
-        <div class="head-nav clearfix">
-          <div class="pull-left">
-            <ul class="nav nav-pills">
-              <li <?php if ($sf_context->getRouting()->getCurrentRouteName() == 'homepage') echo ' class="active"' ?>>
-                <a href="<?php echo url_for('@homepage') ?>">Текущие акции</a>
-              </li>
-              <li <?php if ($sf_context->getRouting()->getCurrentRouteName() == 'past-events') echo ' class="active"' ?>>
-                <a href="<?php echo url_for('@past-events') ?>">Прошедшие акции</a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="mega-basket">
-            <a href="<?php echo url_for('city/modal') ?>" class="city-chooser" title="<?php echo $sf_user->getCity() ?>" data-toggle="modal" data-target="#city-chooser-modal">Владивосток</a>
-            <a href="<?php echo url_for('@homepage') ?>" class="logo hide-text" title="На главную страницу">Cheapon</a>
-            <a href="" class="basket" onclick="$(this).find('.counter').text(Math.round(Math.random()*10+3)); return false">
-              <span class="counter img-circle">0</span>
-            </a>
-          </div>
-
-          <div class="pull-right">
-            <ul class="nav nav-pills">
-              <li<?php if ($sf_context->getModuleName() == 'page' and $sf_request->getParameter('slug') == 'how-it-works') echo ' class="active"' ?>><a href="<?php echo url_for('@page?slug=how-it-works') ?>">Как это работает</a></li>
-              <li><a href="">Для бизнеса</a></li>
-              <li><a href="" class="btn m0">Вход</a></li>
-            </ul>
-          </div>
+        <div class="pull-right">
+          <ul class="nav nav-pills">
+            <li<?php if ($sf_context->getModuleName() == 'page' and $sf_request->getParameter('slug') == 'how-it-works') echo ' class="active"' ?>><a href="<?php echo url_for('@page?slug=how-it-works') ?>">Как это работает</a></li>
+            <li><a href="">Для бизнеса</a></li>
+            <li><a href="<?php echo url_for('sfGuardAuth/modal') ?>" class="btn m0" data-toggle="modal" data-target="#login-form-modal">Вход</a></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -130,7 +109,21 @@
   <div class="modal hide fade" id="city-chooser-modal">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-      <h3>Выберите город</h3>
+      <h2>Выберите город</h2>
+    </div>
+    <div class="modal-body">
+      <p>Загрузка…</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="btn" data-dismiss="modal">Закрыть</a>
+    </div>
+  </div>
+
+  <div class="modal hide fade" id="login-form-modal">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h2>Авторизация</h2>
+      <h3>Чтобы купить купоны вам нужно авторизоваться на сайте</h3>
     </div>
     <div class="modal-body">
       <p>Загрузка…</p>
