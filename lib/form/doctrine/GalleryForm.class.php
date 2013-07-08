@@ -12,5 +12,12 @@ class GalleryForm extends BaseGalleryForm
 {
   public function configure()
   {
+    unset (
+      $this['created_at'],
+      $this['created_by'],
+      $this['updated_at'],
+      $this['updated_by'],
+      $this['version']
+    );
   }
 }

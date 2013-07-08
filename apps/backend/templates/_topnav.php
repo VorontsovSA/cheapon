@@ -35,6 +35,16 @@
       'isActive' => $sf_context->getModuleName() == 'category',
       'href' => url_for('category/index'),
     ),
+    'Галереи' => array(
+      'credentials' => $sf_user->hasCredential('can_view_galeries'),
+      'isActive' => $sf_context->getModuleName() == 'gallery',
+      'href' => url_for('gallery/index'),
+    ),
+    'Картинки галерей' => array(
+      'credentials' => $sf_user->hasCredential('can_view_images'),
+      'isActive' => $sf_context->getModuleName() == 'image',
+      'href' => url_for('image/index'),
+    ),
   );
 ?>
 <ul class="nav">
