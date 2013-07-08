@@ -472,3 +472,22 @@ body {
         position: absolute;
         left: 0;
       }
+
+.fuck-you-padding {
+  margin-left: -60px;
+  width: 1080px;
+}
+
+.address-info {
+  margin-top: 2em;
+}
+  .address-info > div {
+    background: transparent url(/img/address-info-compas-icon.png) center top no-repeat;
+    padding-top: 2.5em;
+  }
+  .address-info .phone {
+    background-image: url(/img/address-info-phone-icon.png);
+  }
+  .address-info .clock {
+    background-image: url(/img/address-info-clock-icon.png);
+  }

@@ -72,7 +72,31 @@
 
   <img src="http://lorempixel.com/1050/440/?1" alt="" />
 
-  <h1 class="text-center" style="color:red">Контактная информация</h1>
+  <div class="row address-info fuck-you-padding text-center">
+    <div class="span6 address"><?php if ($event->getProvider()->getAddress()): ?>
+      <p><?php echo $event->getProvider()->getAddress() ?></p>
+
+      <a href="#" class="map-toggler">Показать на карте</a>
+    <?php endif ?></div>
+    <div class="span6 phone">
+      <p>
+        Контактная информация: <br />
+        <?php echo $event->getProvider()->getPhones() ?>
+      </p>
+      <p>
+        <?php if ($event->getProvider()->getUrl()): ?>
+          <?php echo $event->getProvider()->getUrl() ?><br />
+        <?php endif ?>
+        <?php if ($event->getProvider()->get('e_mail')): ?>
+          <a href="mailto:<?php echo $event->getProvider()->get('e_mail') ?>"><?php echo $event->getProvider()->get('e_mail') ?></a>
+        <?php endif ?>
+      </p>
+    </div>
+    <div class="span6 clock"><?php if ($event->getProvider()->getBusinessHours()): ?>
+      Часы работы: <br />
+      <?php echo $event->getProvider()->getBusinessHours() ?>
+    <?php endif ?></div>
+  </div>
 
   <div class="striped-head">
     <h3>Комментарии</h3>

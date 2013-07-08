@@ -10,6 +10,11 @@
       'isActive' => $sf_context->getModuleName() == 'provider',
       'href' => url_for('provider/index'),
     ),
+    'Телефоны поставщиков' => array(
+      'credentials' => $sf_user->hasCredential('can_view_phones'),
+      'isActive' => $sf_context->getModuleName() == 'phone',
+      'href' => url_for('phone/index'),
+    ),
     'Клиенты' => array(
       'credentials' => $sf_user->hasCredential('can_view_clients'),
       'isActive' => $sf_context->getModuleName() == 'client',

@@ -1,0 +1,8 @@
+new:
+  credentials: [[can_create_phones]]
+
+edit:
+  credentials: [[can_edit_phones]]
+
+delete:
+  credentials: [[can_delete_phones]]

@@ -83,6 +83,10 @@ Provider: # Поставщик услуг
     City:
       local: city_id
       foreign: id
+    Phones:
+      class: Phone
+      local: id
+      foreign: provider_id
 
 Event: #Акция
   actAs:
