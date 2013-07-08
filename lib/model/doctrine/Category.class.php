@@ -22,4 +22,30 @@ class Category extends BaseCategory
    
     return $q->fetchOne()->getNumberOfEvents();
   }
+  
+  public function save(Doctrine_Connection $conn = null)
+  {
+    if ($this->isNew())
+    {
+      $this->setSort(Doctrine_Core::getTable('Category')->getMaxSort() + 1);
+    }
+ 
+    return parent::save($conn);
+  }
+  
+  public function delete(Doctrine_Connection $conn = null)
+  {
+    $questions = Doctrine_Query::create()
+      ->from('Category c')
+      ->where('c.sort > ?', $this->getSort())
+      ->execute();
+ 
+    foreach($questions as $question)
+    {
+      $question->setSort($question->getSort() - 1);
+      $question->save();
+    }
+ 
+    return parent::delete($conn);
+  }
 }

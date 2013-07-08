@@ -12,5 +12,8 @@ class CommentForm extends BaseCommentForm
 {
   public function configure()
   {
+    $this->useFields(array(
+      'answer'
+    ));
   }
 }

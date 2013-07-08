@@ -35,12 +35,7 @@
       'isActive' => $sf_context->getModuleName() == 'page',
       'href' => url_for('page/index'),
     ),
-    'Категории акций' => array(
-      'credentials' => $sf_user->hasCredential('can_view_categories'),
-      'isActive' => $sf_context->getModuleName() == 'category',
-      'href' => url_for('category/index'),
-    ),
-    'Картинки поставщиков' => array(
+    'Картинки галерей' => array(
       'credentials' => $sf_user->hasCredential('can_view_images'),
       'isActive' => $sf_context->getModuleName() == 'image',
       'href' => url_for('image/index'),

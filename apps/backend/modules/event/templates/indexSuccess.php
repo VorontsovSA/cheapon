@@ -39,7 +39,7 @@
       <td><?php echo ($event->getIsActive())?'<i class="icon-ok"></i>':'' ?></td>
       <td><?php echo $event->getCategory() ?></td>
       <td><span class="badge badge-info"><?php echo $event->getCouponsCount() ?></span></td>
-      <td><span class="badge badge-success"><?php $commentsCount = $event->getCommentsCount(); echo $commentsCount ?></span><?php if($commentsCount - ($readCommentCount = $event->getReadCount($sf_user->getGuardUser()->getId())) > 0):?>/<span class="badge badge-warning"><?php echo $commentsCount - $readCommentCount ?></span><?php endif ?></td>
+      <td><a href="<?php echo url_for('event/comments?id='.$event->getId()) ?>"><span class="badge badge-success"><?php $commentsCount = $event->getCommentsCount(); echo $commentsCount ?></span><?php if($commentsCount - ($readCommentCount = $event->getReadCount($sf_user->getGuardUser()->getId())) > 0):?>/<span class="badge badge-warning"><?php echo $commentsCount - $readCommentCount ?></span><?php endif ?></a></td>
     </tr>
   <?php endforeach; ?></tbody>
 </table>

@@ -16,4 +16,9 @@ class CategoryTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Category');
     }
+    
+    public function getMaxSort()
+    {
+        return Doctrine_Core::getTable('Category')->createQuery('q')->select('max(q.sort)')->fetchOne()->getMax();
+    }
 }

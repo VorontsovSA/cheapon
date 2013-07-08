@@ -276,13 +276,16 @@ Comment: # Комментарии к акциям
     answered_by: # sfGuardUser
       type: integer
       notnull: false
+    answered_at:
+      type: timestamp
+      notnull: false
   relations:
     Event:
       local: event_id
       foreign: id
       foreignAlias: Comments
     Moderator:
-      model: sfGuardUser
+      class: sfGuardUser
       local: answered_by
       foreign: id
   

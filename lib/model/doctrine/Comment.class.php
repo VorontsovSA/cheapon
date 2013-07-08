@@ -12,4 +12,9 @@
  */
 class Comment extends BaseComment
 {
+  public function markReaded()
+  {
+    $this->link('Users', array(sfContext::getInstance()->getUser()->getGuardUser()->getId()));
+    $this->save();
+  }
 }
