@@ -491,3 +491,7 @@ body {
   .address-info .clock {
     background-image: url(/img/address-info-clock-icon.png);
   }
+
+.provider-gallery {
+  margin-top: 2em;
+}

@@ -1,8 +1,0 @@
-new:
-  credentials: [[can_create_gallerys]]
-
-edit:
-  credentials: [[can_edit_gallerys]]
-
-delete:
-  credentials: [[can_delete_gallerys]]

@@ -87,6 +87,11 @@ Provider: # Поставщик услуг
       class: Phone
       local: id
       foreign: provider_id
+    Images:
+      class: Image
+      type: many
+      local: id
+      foreign: provider_id
 
 Event: #Акция
   actAs:
@@ -181,38 +186,21 @@ Client: # Покупатель купонов
       foreign: event_id
       foreignAlias: Clients
 
-Gallery: # Галерея поставщика
-  actAs:
-    Timestampable: ~
-    Signable: ~
-    Versionable: ~
-  columns:
-    name:
-      type: string(255)
-      notnull: false
-    provider_id:
-      type: integer
-      notnull: true
-  relations:
-    Provider:
-      local: provider_id
-      foreign: id
-
 Image: # Изображения для галереи поставщика
   actAs:
     Timestampable: ~
     Signable: ~
     Versionable: ~
   columns:
+    provider_id:
+      type: integer
+      notnull: true
     file:
       type: string(255)
       notnull: true
-    gallery_id:
-      type: integer
-      notnull: true
   relations:
-    Gallery:
-      local: gallery_id
+    Provider:
+      local: provider_id
       foreign: id
 
 Coupon: # Купон

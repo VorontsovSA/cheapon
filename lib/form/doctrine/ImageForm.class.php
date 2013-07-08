@@ -19,5 +19,20 @@ class ImageForm extends BaseImageForm
       $this['updated_by'],
       $this['version']
     );
+
+    $this->widgetSchema['file'] = new sfWidgetFormInputFileEditable(array(
+      'file_src'  => ($this->getObject()->getFile()) ? '/uploads/providerimages/'.$this->getObject()->getFile() : '/uploads/providerimages/noimage.gif',
+      'is_image'  => true,
+      'edit_mode' => true,
+      'template'  => '<div>%file%<br />%input%</div>',
+    ));
+
+    $this->setValidator('file', new sfValidatorThumbnailFile(array(
+      'width' => 1050,
+      'height' => 440,
+      'crop' => true,
+      'required' => false,
+      'path' => sfConfig::get('sf_upload_dir').'/providerimages',
+    )));
   }
 }

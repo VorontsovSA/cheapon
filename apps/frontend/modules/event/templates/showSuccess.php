@@ -70,7 +70,15 @@
     <?php echo $event->getProvider()->getShortDescription() ?>
   <?php endif ?>
 
-  <img src="http://lorempixel.com/1050/440/?1" alt="" />
+  <div id="gallery" class="provider-gallery carousel slide">
+    <div class="carousel-inner"><?php foreach ($sf_data->getRaw('event')->getProvider()->getImages() as $i => $image): ?>
+      <div class="item<?php if ($i === 0) echo ' active' ?>">
+        <img src="/uploads/providerimages/<?php echo $image->getFile() ?>" alt="">
+      </div>
+    <?php endforeach ?></div>
+    <a class="left carousel-control" href="#gallery" data-slide="prev">‹</a>
+    <a class="right carousel-control" href="#gallery" data-slide="next">›</a>
+  </div>
 
   <div class="row address-info fuck-you-padding text-center">
     <div class="span6 address"><?php if ($event->getProvider()->getAddress()): ?>

@@ -52,7 +52,7 @@ class EventForm extends BaseEventForm
     ));
     
     $this->setValidator('photo2', new sfValidatorThumbnailFile(array(
-      'width' => 370,
+      'width' => 380,
       'height' => 290,
       'crop' => true,
       'required' => false,
@@ -67,7 +67,7 @@ class EventForm extends BaseEventForm
     ));
     
     $this->setValidator('photo3', new sfValidatorThumbnailFile(array(
-      'width' => 370,
+      'width' => 380,
       'height' => 290,
       'crop' => true,
       'required' => false,

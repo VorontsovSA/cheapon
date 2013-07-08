@@ -12,15 +12,15 @@
   <thead>
     <tr>
       <th>Id</th>
+      <th>Provider</th>
       <th>File</th>
-      <th>Gallery</th>
     </tr>
   </thead>
   <tbody><?php foreach ($images as $image): ?>
     <tr>
       <td><a href="<?php echo url_for('image/edit?id='.$image->getId()) ?>"><?php echo $image->getId() ?></a></td>
+      <td><?php echo $image->getProvider() ?></td>
       <td><?php echo $image->getFile() ?></td>
-      <td><?php echo $image->getGallery() ?></td>
     </tr>
   <?php endforeach; ?></tbody>
 </table>
