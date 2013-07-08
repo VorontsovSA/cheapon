@@ -35,18 +35,6 @@
       </div>
     </div>
 
-    <div id="choose-city-bar" class="hide">
-      <div class="container">
-        <ul class="unstyled">
-          <li><a href="">Москва</a></li>
-          <li><a href="">Санкт-Петербург</a></li>
-          <li><a href="">Архангельск</a></li>
-          <li><a href="">Астрахань</a></li>
-          <li><a href="">Барнаул</a></li>
-        </ul>
-      </div>
-    </div>
-
     <div id="header">
       <div class="container">
         <div class="head-nav clearfix">
@@ -62,7 +50,7 @@
           </div>
 
           <div class="mega-basket">
-            <a href="" class="city-chooser" title="<?php echo $sf_user->getCity() ?>">Владивосток</a>
+            <a href="<?php echo url_for('city/modal') ?>" class="city-chooser" title="<?php echo $sf_user->getCity() ?>" data-toggle="modal" data-target="#city-chooser-modal">Владивосток</a>
             <a href="<?php echo url_for('@homepage') ?>" class="logo hide-text" title="На главную страницу">Cheapon</a>
             <a href="" class="basket" onclick="$(this).find('.counter').text(Math.round(Math.random()*10+3)); return false">
               <span class="counter img-circle">0</span>
@@ -138,6 +126,18 @@
       </div>
     </div>
   </div>
-</body>
 
+  <div class="modal hide fade" id="city-chooser-modal">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h3>Выберите город</h3>
+    </div>
+    <div class="modal-body">
+      <p>Загрузка…</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="btn" data-dismiss="modal">Закрыть</a>
+    </div>
+  </div>
+</body>
 </html>
