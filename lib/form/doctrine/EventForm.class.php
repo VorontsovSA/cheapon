@@ -74,24 +74,45 @@ class EventForm extends BaseEventForm
       'path'     => sfConfig::get('sf_upload_dir').'/eventimages',
     )));
     
-    $this->widgetSchema->setLabels(array(
-      'name' => 'Название акции',
-      'full_name' => 'Полное название',
-      'discount' => 'Размер скидки',
-      'price' => 'Цена купона',
-      'conditions' => 'Условия акции',
-      'description' => 'Описание акции',
-      'event_start' => 'Начало действия акции',
-      'event_end' => 'Окончание действия акции',
-      'sale_start' => 'Начало продажи купонов',
-      'sale_end' => 'Окончание продажи купонов',
-      'is_active' => 'Акция опубликована',
-      'photo1' => 'Фото на главной',
-      'photo2' => 'Фото из описания №1',
-      'photo3' => 'Фото из описания №2',
-      'provider_id' => 'Поставщик акции',
-      'category_id' => 'Категория'
-    ));
+    $this
+      ->widgetSchema
+      ->setLabels(array(
+        'name' => 'Название акции',
+        'full_name' => 'Полное название',
+        'discount' => 'Размер скидки',
+        'price' => 'Цена купона',
+        'conditions' => 'Условия акции',
+        'description' => 'Описание акции',
+        'event_start' => 'Начало действия акции',
+        'event_end' => 'Окончание действия акции',
+        'sale_start' => 'Начало продажи купонов',
+        'sale_end' => 'Окончание продажи купонов',
+        'is_active' => 'Акция опубликована',
+        'photo1' => 'Фото на главной',
+        'photo2' => 'Фото из описания №1',
+        'photo3' => 'Фото из описания №2',
+        'provider_id' => 'Поставщик акции',
+        'category_id' => 'Категория'
+      ))
+      ->setDefaults(array(
+          'conditions' => '<div class="row terms-list">
+                            <div class="span8">
+                              <ul>
+                                <li>Условие слева</li>
+                              </ul>
+                            </div>
+                            <div class="span8 pull-right">
+                              <ul>
+                                <li>Условие справа</li>
+                              </ul>
+                            </div>
+                          </div>',
+          'description' => '<div class="text-center">
+                              <p></p>
+                            </div>',
+          //
+      ))
+    ;
   }
 }
 

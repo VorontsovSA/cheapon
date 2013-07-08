@@ -1,4 +1,11 @@
-<div class="alert alert-info">THERE IS NO FILTER FOR PAST/PRESENT EVENTS!</div>
+<div class="alert alert-info">
+  <ul>
+    <li>Фильтр прошедшие/текущие</li>
+    <li>Прошедшие → категории</li>
+    <li>Чё делать с пустыми категориями?</li>
+    <li>Заменить вёрстку плиток</li>
+  </ul>
+</div>
 
 <div class="text-center">
   <?php include_partial('categories', array('categories' => $categories)) ?>

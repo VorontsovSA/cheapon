@@ -24,15 +24,24 @@ class ProviderForm extends BaseProviderForm
     $this->widgetSchema['short_description']->setAttribute('class', 'wisiwyg-editor');
     $this->widgetSchema['full_description']->setAttribute('class', 'wisiwyg-editor');
 
-    $this->widgetSchema->setLabels(array(
-      'name' => 'Название поставщика',
-      'short_description' => 'Краткое описание',
-      'full_description' => 'Полное описание',
-      'url' => 'Адрес сайта',
-      'e_mail' => 'E-mail',
-      'business_hours' => 'Часы работы',
-      'address' => 'Адрес',
-      'city_id' => 'Город'
-    ));
+    $this
+      ->widgetSchema
+        ->setLabels(array(
+          'name' => 'Название поставщика',
+          'short_description' => 'Краткое описание',
+          'full_description' => 'Полное описание',
+          'url' => 'Адрес сайта',
+          'e_mail' => 'E-mail',
+          'business_hours' => 'Часы работы',
+          'address' => 'Адрес',
+          'city_id' => 'Город'
+        ))
+        ->setDefaults(array(
+          'short_description' => '<div class="text-center">
+                                  <p></p>
+                                </div>',
+          //
+        ))
+    ;
   }
 }

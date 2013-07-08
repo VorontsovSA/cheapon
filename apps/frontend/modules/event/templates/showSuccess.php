@@ -1,26 +1,36 @@
-<div class="alert alert-info">I'M JUST STUB!</div>
+<div class="alert alert-info">
+  <ul>
+    <li>Назад</li>
+    <li>Осталось 3 купона!</li>
+    <li>Купон действует с 30 августа по 15 сентября</li>
+    <li>Галерея поставщика</li>
+    <li>Контакты поставщика</li>
+    <li>Лента коментов</li>
+    <li>Добавление комента</li>
+  </ul>
+</div>
 
 <div class="text-center">
   <ul class="nav nav-pills" style="display:inline-block">
     <li><a href="">Назад</a></li>
   </ul>
 
-  <h1 class="superheader m0">Три урока игры на ударных иструментах от лучшего барабанщика России (800 руб. вместо 2000 руб.)</h1>
-  <h5>Купон действует с 30 августа по 15 сентября</h5>
+  <h1 class="superheader m0"><?php echo $event ?></h1>
+  <h5>DUMMY: Купон действует с 30 августа по 15 сентября</h5>
 </div>
 
 <div class="mega-border page with-grafon-zbs">
-  <div class="grafon-zbs" style="background-image: url(http://lorempixel.com/375/290/?1)">
-    <div class="second-bg" style="background-image: url(http://lorempixel.com/375/290/?2)"></div>
+  <div class="grafon-zbs" style="background-image: url(/uploads/eventimages/<?php echo $event->getPhoto2() ?>)">
+    <div class="second-bg" style="background-image: url(/uploads/eventimages/<?php echo $event->getPhoto3() ?>)"></div>
     <div class="take-the-last">
       <span>Осталось 3 купона!</span>
     </div>
     <div class="centrota">
       <div class="discount">
-        70<span class="percent">%</span>
+        <?php echo $event->getDiscount() ?><span class="percent">%</span>
       </div>
       <div class="price">
-        50<span class="currency">руб.</span>
+        <?php echo $event->getPrice() ?><span class="currency">руб.</span>
       </div>
       <div class="buy">
         <a href="" class="btn">Купить купон</a>
@@ -28,58 +38,37 @@
     </div>
     <div class="nizota">
       <div class="eta">
-        3 дня 23:12
+        <?php echo $event->getETA() ?>
       </div>
       <div class="comments">
-        234
+        <?php echo $event->getCommentsCount() ?>
       </div>
       <div class="likes">
-        890
+        <?php echo $event->getLikesCount() ?>
       </div>
     </div>
   </div>
 
-  <div class="striped-head">
-    <h3>Условия</h3>
-  </div>
-  <div class="row terms-list">
-    <div class="span8">
-      <ul>
-        <li>Купоны действительны с 16 мая по 16 июля 2013 года;</li>
-        <li>Стоимость купона 50 рублей;</li>
-        <li>Купон дает право получить скидку 50% на все меню итальянского ресторана La Strada;</li>
-        <li>Скидка распространяется на все салаты, холодные закуски, горячие закуски, супы, гарниры, пасту, горячие блюда, рыбные и мясные блюда, пиццу, роллы и десерты;</li>
-        <li>Ознакомиться с меню вы можете на странице акции;</li>
-        <li>Скидка не действует на напитки, меню бара и бизнес-ланч</li>
-      </ul>
+  <?php if ($event->getConditions()): ?>
+    <div class="striped-head">
+      <h3>Условия</h3>
     </div>
-    <div class="span8 pull-right">
-      <ul>
-        <li>Скидка также распространяется на вынос блюд;</li>
-        <li>Ограничение по сумме чека - не более 5000 рублей на человека (без учета скидки);</li>
-        <li>Воспользоваться купоном можно в любой день в любое время работы ресторана;</li>
-        <li>Один купон действует на одного человека;</li>
-        <li>За время акции один человек может использовать неограниченное количество купонов;</li>
-      </ul>
+    <?php echo $event->getConditions() ?>
+  <?php endif ?>
+
+  <?php if ($event->getDescription()): ?>
+    <div class="striped-head">
+      <h3>Описание</h3>
     </div>
-  </div>
+    <?php echo $event->getDescription() ?>
+  <?php endif ?>
 
   <div class="striped-head">
-    <h3>Описание</h3>
+    <h3><?php echo $event->getProvider() ?></h3>
   </div>
-  <div class="text-center">
-    <p>Ультразвуковая чистка – один из самых бережных и в то же время эффективных способов глубокого очищения, благодаря которому кожа становится более гладкой и действительно чистой, а цвет лица ровным. Такая процедура занимает немного времени и не требует специальной подготовки перед ее проведением.</p>
-    <p>Суть УЗ-чистки - под действием ультразвуковых волн в коже расщепляются загрязнения, закупоривавшие поры и сальные железы.</p>
-    <p><img src="http://lorempixel.com/600/300/?1" alt="" /></p>
-    <p>Ультразвуковая чистка – один из самых бережных и в то же время эффективных способов глубокого очищения, благодаря которому кожа становится более гладкой и действительно чистой, а цвет лица ровным.</p>
-  </div>
-
-  <div class="striped-head">
-    <h3>Ресторан «Русская охота»</h3>
-  </div>
-  <div class="text-center">
-    <p>Ресторан «Русская охота» открывает двери для всех ценителей вкусной и здоровой пищи, для тех, кому важна уютная атмосфера и внимательное обслуживание персонала.</p>
-  </div>
+  <?php if ($event->getProvider()->getShortDescription()): ?>
+    <?php echo $event->getProvider()->getShortDescription() ?>
+  <?php endif ?>
 
   <img src="http://lorempixel.com/1050/440/?1" alt="" />
 

@@ -40,7 +40,7 @@
         <div class="pull-right">
           <ul class="nav nav-pills">
             <li<?php if ($sf_context->getModuleName() == 'page' and $sf_request->getParameter('slug') == 'how-it-works') echo ' class="active"' ?>><a href="<?php echo url_for('@page?slug=how-it-works') ?>">Как это работает</a></li>
-            <li><a href="">Для бизнеса</a></li>
+            <li<?php if ($sf_context->getModuleName() == 'page' and $sf_request->getParameter('slug') == 'client-attraction') echo ' class="active"' ?>><a href="<?php echo url_for('@page?slug=client-attraction') ?>">Для бизнеса</a></li>
             <li><a href="<?php echo url_for('sfGuardAuth/modal') ?>" class="btn m0" data-toggle="modal" data-target="#login-form-modal">Вход</a></li>
           </ul>
         </div>
