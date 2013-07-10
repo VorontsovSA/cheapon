@@ -1,6 +1,22 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+personal:
+  url:   /personal
+  param: { module: personal, action: index }
+
+sf_guard_register:
+  url:   /personal/register
+  param: { module: sfGuardRegister, action: index }
+
+sf_guard_signin:
+  url:   /personal/login
+  param: { module: sfGuardAuth, action: signin }
+
+sf_guard_signout:
+  url:   /personal/logout
+  param: { module: sfGuardAuth, action: signout }
+
 past-events:
   url:   /past-events/:category
   param: { module: event, action: past, category: all }

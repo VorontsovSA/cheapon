@@ -11,7 +11,7 @@
   <div class="form-actions">
     <button type="submit" class="btn btn-primary">Войти</button>
     или
-    <a href="" class="">Регистрация</a>
+    <a href="<?php echo url_for('@sf_guard_register') ?>" class="">Регистрация</a>
   </div>
   <h3>Быстрый вход через социальные сети</h3>
   <div class="login-helpers">
