@@ -30,6 +30,11 @@
       'isActive' => $sf_context->getModuleName() == 'page',
       'href' => url_for('page/index'),
     ),
+    'Обратная связь' => array(
+      'credentials' => $sf_user->hasCredential('can_view_feedbacks'),
+      'isActive' => $sf_context->getModuleName() == 'feedback',
+      'href' => url_for('feedback/index'),
+    ),
   );
 ?>
 <ul class="nav">

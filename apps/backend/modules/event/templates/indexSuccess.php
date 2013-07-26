@@ -30,7 +30,7 @@
   <tbody><?php foreach ($events as $event): ?>
     <tr>
       <td><a href="<?php echo url_for('event/show?id='.$event->getId()) ?>"><?php echo $event->getName() ?></a></td>
-      <td><img src="<?php echo '/uploads/eventimages/'.($event->getPhoto1()?:'noimage.gif') ?>" width="128" /></td>
+      <td style="width: 128px"><img src="<?php echo '/uploads/eventimages/'.($event->getPhoto1()?:'noimage.gif') ?>" width="128" /></td>
       <td><a href="<?php echo url_for('provider/show?id='.$event->getProvider()->getId()) ?>"><?php echo $event->getProvider()->getName() ?></a></td>
       <td><?php echo $event->getDiscount() ?></td>
       <td><?php echo $event->getPrice() ?></td>

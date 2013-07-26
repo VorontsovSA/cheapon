@@ -37,7 +37,8 @@ class feedbackActions extends sfActions
     if ($form->isValid()) {
       $feedback = $form->save();
 
-      $this->redirect('feedback/edit?id='.$feedback->getId());
+      // SET FLASH
+      $this->redirect('@feedback');
     }
   }
 }
