@@ -7,6 +7,12 @@
     <a href="<?php echo url_for('provider/edit?id='.$provider->getId()) ?>" class="btn btn-primary">Редактировать</a>
   </div>
   <div class="btn-group">
+    <a href="<?php echo url_for('phone/index?id='.$provider->getId()) ?>" class="btn btn-primary">Редактировать телефоны</a>
+  </div>
+  <div class="btn-group">
+    <a href="<?php echo url_for('image/index?id='.$provider->getId()) ?>" class="btn btn-primary">Редактировать изображения</a>
+  </div>
+  <div class="btn-group">
     <a href="<?php echo url_for('provider/index') ?>" class="btn">Вернуться к списку</a>
   </div>
 </div>

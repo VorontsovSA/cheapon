@@ -20,6 +20,8 @@ class ImageForm extends BaseImageForm
       $this['version']
     );
 
+    $this->widgetSchema['provider_id'] = new sfWidgetFormInputHidden();
+
     $this->widgetSchema['file'] = new sfWidgetFormInputFileEditable(array(
       'file_src'  => ($this->getObject()->getFile()) ? '/uploads/providerimages/'.$this->getObject()->getFile() : '/uploads/providerimages/noimage.gif',
       'is_image'  => true,
@@ -34,5 +36,10 @@ class ImageForm extends BaseImageForm
       'required' => false,
       'path' => sfConfig::get('sf_upload_dir').'/providerimages',
     )));
+
+    $this->widgetSchema
+        ->setLabels(array(
+          'file' => 'Изображение',
+        ));
   }
 }

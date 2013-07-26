@@ -1,9 +1,9 @@
 <?php use_stylesheets_for_form($form) ?>
 <?php use_javascripts_for_form($form) ?>
 
-<form action="<?php echo url_for('phone/'
+<form class="form-horizontal" action="<?php echo url_for('phone/'
   . ($form->getObject()->isNew() ? 'create' : 'update')
-  . (!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : ''))
+  . (!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '?id='.$provider->getId()))
   ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
 
   <?php echo $form->renderUsing('bootstrap') ?>
@@ -13,13 +13,13 @@
   <?php endif ?>
 
   <div class="form-actions">
-    <button type="submit" class="btn btn-primary">Save</button>
-    <a href="<?php echo url_for('phone/index') ?>" class="btn">Back to list</a>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+    <a href="<?php echo url_for('phone/index?id='.$provider->getId()) ?>" class="btn">Вернуться к списку</a>
 
     <?php if (!$form->getObject()->isNew()): ?>
-      <?php echo link_to('Delete', 'phone/delete?id='.$form->getObject()->getId(), array(
+      <?php echo link_to('Удалить', 'phone/delete?id='.$form->getObject()->getId(), array(
         'method' => 'delete',
-        'confirm' => 'Are you sure?',
+        'confirm' => 'Вы уверены?',
         'class' => 'btn btn-warning pull-right',
       )) ?>
     <?php endif ?>

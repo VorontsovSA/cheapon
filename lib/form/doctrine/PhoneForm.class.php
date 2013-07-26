@@ -19,5 +19,12 @@ class PhoneForm extends BasePhoneForm
       $this['updated_by'],
       $this['version']
     );
+
+    $this->widgetSchema['provider_id'] = new sfWidgetFormInputHidden();
+
+    $this->widgetSchema
+        ->setLabels(array(
+          'name' => 'Номер телефона',
+        ));
   }
 }

@@ -1,5 +1,5 @@
 <h1 class="page-header">
-  New Phone
+  Добавление телефона поставщика <?php echo $provider ?>
 </h1>
 
-<?php include_partial('form', array('form' => $form)) ?>
+<?php include_partial('form', array('form' => $form, 'provider' => $provider)) ?>

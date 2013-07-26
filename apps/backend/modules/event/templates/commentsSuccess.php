@@ -19,9 +19,9 @@
       <div class="media-body">
         <div class="btn-group pull-right">
           <?php if($comment['is_active']): ?>
-          <a class="btn" href="<?php echo url_for('event/hidecomment?id='.$comment['id']) ?>"><i class="icon-volume-off"></i></a>
+          <a class="btn btn-info" href="<?php echo url_for('event/hidecomment?id='.$comment['id']) ?>"><i class="icon-volume-off icon-white"></i> Скрыть</a>
           <?php else: ?>
-          <a class="btn" href="<?php echo url_for('event/publishcomment?id='.$comment['id']) ?>"><i class="icon-volume-up"></i></a>
+          <a class="btn btn-success" href="<?php echo url_for('event/publishcomment?id='.$comment['id']) ?>"><i class="icon-volume-up icon-white"></i> Опубликовать</a>
           <?php endif; ?>
           <?php echo link_to('<i class="icon-remove"></i>', 'event/removecomment?id='.$comment['id'], array(
             'method' => 'delete',
