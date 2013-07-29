@@ -17,25 +17,30 @@ class sfGuardRegisterForm extends BasesfGuardRegisterForm
   {
     $this
       ->getWidgetSchema()
-        ->offsetSet('phone', new sfWidgetFormInputText())
-        ->offsetSet('city', new sfWidgetFormDoctrineChoice(array('multiple' => false, 'model' => 'City')))
         ->setLabels(array(
           'first_name' => 'Имя:',
           'email_address' => 'Эл. почта:',
           'password' => 'Пароль:',
           'password_again' => 'Повторите пароль:',
           'phone' => 'Телефон:',
-          'city' => 'Город:',
+          'city_id' => 'Город:',
         ))
+        ->offsetSet('username', new sfWidgetFormInputHidden())
     ;
 
-    $this->useFields(array(
-      'first_name',
-      'phone',
-      'city',
-      'email_address',
-      'password',
-      'password_again',
-    ));
+    $this
+      ->setDefaults(array(
+        'username' => 'auto-generated+' . uniqid(),
+      ))
+      ->useFields(array(
+        'first_name',
+        'phone',
+        'city_id',
+        'email_address',
+        'password',
+        'password_again',
+        'username',
+      ))
+    ;
   }
 }

@@ -41,7 +41,13 @@
           <ul class="nav nav-pills">
             <li<?php if ($sf_context->getModuleName() == 'page' and $sf_request->getParameter('slug') == 'how-it-works') echo ' class="active"' ?>><a href="<?php echo url_for('@page?slug=how-it-works') ?>">Как это работает</a></li>
             <li<?php if ($sf_context->getModuleName() == 'page' and $sf_request->getParameter('slug') == 'client-attraction') echo ' class="active"' ?>><a href="<?php echo url_for('@page?slug=client-attraction') ?>">Для бизнеса</a></li>
-            <li><a href="<?php echo url_for('sfGuardAuth/modal') ?>" class="btn m0" data-toggle="modal" data-target="#login-form-modal">Вход</a></li>
+            <li>
+              <?php if ($sf_user->isAuthenticated()): ?>
+                <a href="#">Вошёл!</a>
+              <?php else: ?>
+                <a href="<?php echo url_for('sfGuardAuth/modal') ?>" class="btn m0" data-toggle="modal" data-target="#login-form-modal">Вход</a>
+              <?php endif ?>
+            </li>
           </ul>
         </div>
       </div>
@@ -50,6 +56,13 @@
 
   <div id="content">
     <div class="container">
+      <?php if ($sf_user->hasFlash('flash') and true == ($flash = $sf_user->getFlash('flash'))): ?>
+        <div class="alert alert-<?php echo $flash['type'] ?>">
+          <?php echo $flash['message'] ?>
+          <button type="button" class="close" data-dismiss="alert">×</button>
+        </div>
+      <?php endif ?>
+
       <?php echo $sf_content ?>
     </div>
   </div>

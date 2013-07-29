@@ -14,7 +14,10 @@ class sfGuardRegisterActions extends sfActions
   {
     if ($this->getUser()->isAuthenticated())
     {
-      $this->getUser()->setFlash('notice', 'You are already registered and signed in!');
+      $this->getUser()->setFlash('flash', [
+        'type' => 'warning',
+        'message' => 'Вы уже зарегистрированы и вошли!'
+      ]);
       $this->redirect('@homepage');
     }
 

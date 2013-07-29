@@ -8,7 +8,11 @@ class myUser extends sfGuardSecurityUser
       return CityTable::findOneBySlug($this->getAttribute('city'));
     }
 
-    if (true == ($geocity = ZapilGeo::getCity()) and true == ($city = CityTable::findOneByName($geocity))) {
+    if (
+      $this->isAuthenticated() && true == ($city = $this->getGuardUser()->getCity())
+      or
+      true == ($geocity = ZapilGeo::getCity()) && true == ($city = CityTable::findOneByName($geocity))
+    ) {
       $this->setAttribute('city', $city->getSlug());
 
       return $city;

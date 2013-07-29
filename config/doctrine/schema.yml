@@ -1,4 +1,10 @@
 sfGuardUser:
+  columns:
+    phone:
+      type: string(255)
+    city_id:
+      type: integer
+      notnull: true
   relations:
     ReadComments:
       class: Comment
@@ -24,6 +30,11 @@ City: # Город предоставления услуги
       type: boolean
       default: false
       notnull: true
+  relations:
+    Users:
+      class: sfGuardUser
+      local: id
+      foreign: city_id
 
 Category: # Категория акции
   actAs:
@@ -253,7 +264,7 @@ File: # Файлы
     Provider:
       local: provider_id
       foreign: id
-  
+
 Comment: # Комментарии к акциям
   actAs:
     Timestampable: ~
@@ -288,7 +299,7 @@ Comment: # Комментарии к акциям
       class: sfGuardUser
       local: answered_by
       foreign: id
-  
+
 RefEventLike: # Лайкерсы
   actAs:
     Timestampable: ~
@@ -324,7 +335,7 @@ RefCommentRead: # Прочитанные сообщения
     Comment:
       local: comment_id
       foreign: id
-  
+
 Phone: # Телефоны поставщиков
   actAs:
     Timestampable: ~
@@ -341,7 +352,7 @@ Phone: # Телефоны поставщиков
     Provider:
       local: provider_id
       foreign: id
-  
+
 Faq: # Вопросы и ответы
   actAs:
     Timestampable: ~
