@@ -1,14 +1,15 @@
-<form action="">
+<form action="<?php echo url_for('@sf_guard_signin') ?>" method="post">
   <div class="control-group">
-    <input type="text" placeholder="Эл. почта" />
+    <?php echo $form['username']->render() ?>
   </div>
   <div class="control-group">
     <div class="input-append">
-      <input type="password" placeholder="Пароль" />
+      <?php echo $form['password']->render() ?>
       <span class="add-on"><span class="icon icon-question-sign"></span></span>
     </div>
   </div>
   <div class="form-actions">
+    <?php echo $form->renderHiddenFields(false) ?>
     <button type="submit" class="btn btn-primary">Войти</button>
     или
     <a href="<?php echo url_for('@sf_guard_register') ?>" class="">Регистрация</a>
