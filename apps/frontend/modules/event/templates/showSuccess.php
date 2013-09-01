@@ -1,9 +1,6 @@
 <div class="alert alert-info">
   <ul>
     <li>Осталось 3 купона!</li>
-    <li>Галерея поставщика</li>
-    <li>Контакты поставщика</li>
-    <li>Добавление комента</li>
   </ul>
 </div>
 
@@ -123,7 +120,7 @@
                   <img class="media-object" src="http://lorempixel.com/64/64/?2">
                 </a>
                 <div class="media-body">
-                  <h4 class="media-heading muted"><?php echo $comment->getUpdator() ?>, <?php echo date('d.m.Y H:i', strtotime($comment->getUpdatedAt())) ?></h4>
+                  <h4 class="media-heading muted"><?php echo $comment->getModerator() ?>, <?php echo date('d.m.Y H:i', strtotime($comment->getAnsweredAt())) ?></h4>
                   <p><?php echo $comment->getAnswer() ?></p>
                 </div>
              </div>
@@ -134,8 +131,8 @@
     </ul>
   <?php endif ?>
 
-  <form class="text-center">
-    <textarea name="" id="" cols="30" rows="10">Ваш комментарий…</textarea><br />
+  <form action="<?php echo url_for('feedback/comment') ?>" class="text-center">
+    <?php echo $form->renderUsing('bootstrap') ?>
     <button type="submit" class="btn">Добавить комментарий</button>
   </form>
 </div>

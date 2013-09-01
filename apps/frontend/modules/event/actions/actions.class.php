@@ -46,8 +46,24 @@ class eventActions extends sfActions
     $this->event = Doctrine_Query::create()
       ->from('Event e')
       ->addWhere('e.id = ?', $request->getParameter('id'))
+      ->leftJoin('e.Provider p')
+      ->leftJoin('p.Images')
+      ->leftJoin('e.Comments c with c.is_active = true')
+      ->leftJoin('c.Creator')
+      ->leftJoin('c.Moderator')
       ->limit(1)
       ->fetchOne()
+    ;
+
+    $this->form = new CommentForm();
+    $this->form
+      ->setDefaults([
+        'event_id' => $this->event->getId(),
+      ])
+      ->useFields([
+        'name',
+        'event_id',
+      ])
     ;
   }
 }
