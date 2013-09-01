@@ -3,7 +3,6 @@
     <li>Осталось 3 купона!</li>
     <li>Галерея поставщика</li>
     <li>Контакты поставщика</li>
-    <li>Лента коментов</li>
     <li>Добавление комента</li>
   </ul>
 </div>
@@ -107,27 +106,34 @@
   <div class="striped-head">
     <h3>Комментарии</h3>
   </div>
-  <ul class="media-list">
-    <li class="media">
-      <a class="pull-left" href="#">
-        <img class="media-object" src="http://lorempixel.com/64/64/?1">
-      </a>
-      <div class="media-body">
-        <h4 class="media-heading muted">Alexander Nevmerejskiy, 22 мая 2013  32:48</h4>
-        <p>Открывает двери для всех ценителей вкусной и здоровой пищи, для тех, кому важна уютная атмосфера и внимательное обслуживание персонала?</p>
-
-        <div class="media well">
+  <?php if ($event->getComments()): ?>
+    <ul class="media-list">
+      <?php foreach ($event->getComments() as $comment): ?>
+        <li class="media">
           <a class="pull-left" href="#">
-            <img class="media-object" src="http://lorempixel.com/64/64/?2">
+            <img class="media-object" src="http://lorempixel.com/64/64/?1">
           </a>
           <div class="media-body">
-            <h4 class="media-heading muted">Cheapon, 22 мая 2013  32:48</h4>
-            <p>Да! Двери для всех ценителей вкусной и здоровой пищи, для тех, кому важна уютная атмосфера и внимательное обслуживание персонала!</p>
+            <h4 class="media-heading muted"><?php echo $comment->getCreator() ?>, <?php echo date('d.m.Y H:i', strtotime($comment->getCreatedAt())) ?></h4>
+            <p><?php echo $comment ?></p>
+
+            <?php if ($comment->getAnswer()): ?>
+              <div class="media well">
+                <a class="pull-left" href="#">
+                  <img class="media-object" src="http://lorempixel.com/64/64/?2">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading muted"><?php echo $comment->getUpdator() ?>, <?php echo date('d.m.Y H:i', strtotime($comment->getUpdatedAt())) ?></h4>
+                  <p><?php echo $comment->getAnswer() ?></p>
+                </div>
+             </div>
+           <?php endif ?>
           </div>
-       </div>
-      </div>
-    </li>
-  </ul>
+        </li>
+      <?php endforeach ?>
+    </ul>
+  <?php endif ?>
+
   <form class="text-center">
     <textarea name="" id="" cols="30" rows="10">Ваш комментарий…</textarea><br />
     <button type="submit" class="btn">Добавить комментарий</button>
