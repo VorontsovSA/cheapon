@@ -14,6 +14,7 @@ class eventActions extends sfActions
   {
     $this->categories = Doctrine_Query::create()
       ->from('Category c')
+      ->innerJoin('c.Events e')
       ->addOrderBy('sort asc')
       ->execute()
     ;
@@ -29,12 +30,13 @@ class eventActions extends sfActions
       ;
     }
 
-    $this->events = $eventsQuery->execute();
-  }
+    if ($request->getParameter('past')) {
+      $eventsQuery
+        ->addWhere('e.sale_end <= now()')
+      ;
+    }
 
-  public function executePast(sfWebRequest $request)
-  {
-    $this->forward('event', 'index');
+    $this->events = $eventsQuery->execute();
   }
 
   public function executeShow(sfWebRequest $request)

@@ -20,11 +20,11 @@
       <div class="head-nav clearfix">
         <div class="pull-left">
           <ul class="nav nav-pills">
-            <li <?php if ($sf_context->getRouting()->getCurrentRouteName() == 'homepage') echo ' class="active"' ?>>
+            <li <?php if ($sf_context->getRouting()->getCurrentRouteName() == 'homepage' and !$sf_request->getParameter('past')) echo ' class="active"' ?>>
               <a href="<?php echo url_for('@homepage') ?>">Текущие акции</a>
             </li>
-            <li <?php if ($sf_context->getRouting()->getCurrentRouteName() == 'past-events') echo ' class="active"' ?>>
-              <a href="<?php echo url_for('@past-events') ?>">Прошедшие акции</a>
+            <li <?php if ($sf_context->getRouting()->getCurrentRouteName() == 'homepage' and $sf_request->getParameter('past')) echo ' class="active"' ?>>
+              <a href="<?php echo url_for('@homepage?past=past-events') ?>">Прошедшие акции</a>
             </li>
           </ul>
         </div>

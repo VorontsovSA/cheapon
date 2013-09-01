@@ -17,13 +17,9 @@ sf_guard_signout:
   url:   /personal/logout
   param: { module: sfGuardAuth, action: signout }
 
-past-events:
-  url:   /past-events/:category
-  param: { module: event, action: past, category: all }
-
 homepage:
-  url:   /:category
-  param: { module: event, action: index, category: all }
+  url:   /:past/:category
+  param: { module: event, action: index, category: all, past: false }
 
 show-event:
   url:   /event/show/:id
