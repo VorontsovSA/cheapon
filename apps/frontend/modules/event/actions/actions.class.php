@@ -12,11 +12,10 @@ class eventActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->categories = Doctrine_Query::create()
+    $categoriesQuery = Doctrine_Query::create()
       ->from('Category c')
       ->innerJoin('c.Events e')
       ->addOrderBy('sort asc')
-      ->execute()
     ;
 
     $eventsQuery = Doctrine_Query::create()
@@ -30,12 +29,15 @@ class eventActions extends sfActions
       ;
     }
 
-    if ($request->getParameter('past')) {
-      $eventsQuery
-        ->addWhere('e.sale_end <= now()')
-      ;
+    if ($request->getParameter('type') === 'past') {
+      $eventsQuery->addWhere('e.sale_end <= now()');
+      $categoriesQuery->addWhere('e.sale_end <= now()');
+    } else {
+      $eventsQuery->addWhere('e.sale_end > now()');
+      $categoriesQuery->addWhere('e.sale_end > now()');
     }
 
+    $this->categories = $categoriesQuery->execute();
     $this->events = $eventsQuery->execute();
   }
 

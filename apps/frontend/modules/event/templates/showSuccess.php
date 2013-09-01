@@ -1,8 +1,6 @@
 <div class="alert alert-info">
   <ul>
-    <li>Назад</li>
     <li>Осталось 3 купона!</li>
-    <li>Купон действует с 30 августа по 15 сентября</li>
     <li>Галерея поставщика</li>
     <li>Контакты поставщика</li>
     <li>Лента коментов</li>
@@ -12,11 +10,11 @@
 
 <div class="text-center">
   <ul class="nav nav-pills" style="display:inline-block">
-    <li><a href="">Назад</a></li>
+    <li><a href="<?php echo url_for('@events?category=' . $event->getCategory()->getSlug() . '&type=' . (strtotime($event->getSaleEnd()) <= time() ? 'active' : 'past')) ?>">Назад</a></li>
   </ul>
 
   <h1 class="superheader m0"><?php echo $event ?></h1>
-  <h5>DUMMY: Купон действует с 30 августа по 15 сентября</h5>
+  <h5>Купон действует с <?php echo $event->getActiveDates()['from'] ?> по <?php echo $event->getActiveDates()['to'] ?></h5>
 </div>
 
 <div class="mega-border page with-grafon-zbs">
