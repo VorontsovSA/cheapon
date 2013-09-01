@@ -12,10 +12,10 @@ class eventActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->categories = Doctrine_Query::create()
+    $categoriesQuery = Doctrine_Query::create()
       ->from('Category c')
+      ->innerJoin('c.Events e')
       ->addOrderBy('sort asc')
-      ->execute()
     ;
 
     $eventsQuery = Doctrine_Query::create()
@@ -29,12 +29,16 @@ class eventActions extends sfActions
       ;
     }
 
-    $this->events = $eventsQuery->execute();
-  }
+    if ($request->getParameter('type') === 'past') {
+      $eventsQuery->addWhere('e.sale_end <= now()');
+      $categoriesQuery->addWhere('e.sale_end <= now()');
+    } else {
+      $eventsQuery->addWhere('e.sale_end > now()');
+      $categoriesQuery->addWhere('e.sale_end > now()');
+    }
 
-  public function executePast(sfWebRequest $request)
-  {
-    $this->forward('event', 'index');
+    $this->categories = $categoriesQuery->execute();
+    $this->events = $eventsQuery->execute();
   }
 
   public function executeShow(sfWebRequest $request)
@@ -42,8 +46,24 @@ class eventActions extends sfActions
     $this->event = Doctrine_Query::create()
       ->from('Event e')
       ->addWhere('e.id = ?', $request->getParameter('id'))
+      ->leftJoin('e.Provider p')
+      ->leftJoin('p.Images')
+      ->leftJoin('e.Comments c with c.is_active = true')
+      ->leftJoin('c.Creator')
+      ->leftJoin('c.Moderator')
       ->limit(1)
       ->fetchOne()
+    ;
+
+    $this->form = new CommentForm();
+    $this->form
+      ->setDefaults([
+        'event_id' => $this->event->getId(),
+      ])
+      ->useFields([
+        'name',
+        'event_id',
+      ])
     ;
   }
 }

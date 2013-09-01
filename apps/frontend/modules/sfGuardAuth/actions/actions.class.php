@@ -21,6 +21,8 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
 {
   public function executeModal(sfWebRequest $request)
   {
-
+    $class = sfConfig::get('app_sf_guard_plugin_signin_form', 'sfGuardFormSignin');
+    $this->form = new $class();
+    $this->setTemplate('signin');
   }
 }

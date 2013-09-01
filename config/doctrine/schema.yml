@@ -167,6 +167,7 @@ Event: #Акция
     Category:
       local: category_id
       foreign: id
+      foreignAlias: Events
 
 Client: # Покупатель купонов
   actAs:

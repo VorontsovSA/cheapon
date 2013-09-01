@@ -26,5 +26,8 @@ class sfGuardFormSignin extends BasesfGuardFormSignin
       'password' => 'Пароль',
       'remember' => 'Запомнить'
     ));
+
+    $this->getWidgetSchema()->offsetGet('username')->setAttribute('placeholder', 'Эл. почта');
+    $this->getWidgetSchema()->offsetGet('password')->setAttribute('placeholder', 'Пароль');
   }
 }

@@ -1,22 +1,16 @@
 <div class="alert alert-info">
   <ul>
-    <li>Назад</li>
     <li>Осталось 3 купона!</li>
-    <li>Купон действует с 30 августа по 15 сентября</li>
-    <li>Галерея поставщика</li>
-    <li>Контакты поставщика</li>
-    <li>Лента коментов</li>
-    <li>Добавление комента</li>
   </ul>
 </div>
 
 <div class="text-center">
   <ul class="nav nav-pills" style="display:inline-block">
-    <li><a href="">Назад</a></li>
+    <li><a href="<?php echo url_for('@events?category=' . $event->getCategory()->getSlug() . '&type=' . (strtotime($event->getSaleEnd()) <= time() ? 'active' : 'past')) ?>">Назад</a></li>
   </ul>
 
   <h1 class="superheader m0"><?php echo $event ?></h1>
-  <h5>DUMMY: Купон действует с 30 августа по 15 сентября</h5>
+  <h5>Купон действует с <?php echo $event->getActiveDates()['from'] ?> по <?php echo $event->getActiveDates()['to'] ?></h5>
 </div>
 
 <div class="mega-border page with-grafon-zbs">
@@ -109,29 +103,36 @@
   <div class="striped-head">
     <h3>Комментарии</h3>
   </div>
-  <ul class="media-list">
-    <li class="media">
-      <a class="pull-left" href="#">
-        <img class="media-object" src="http://lorempixel.com/64/64/?1">
-      </a>
-      <div class="media-body">
-        <h4 class="media-heading muted">Alexander Nevmerejskiy, 22 мая 2013  32:48</h4>
-        <p>Открывает двери для всех ценителей вкусной и здоровой пищи, для тех, кому важна уютная атмосфера и внимательное обслуживание персонала?</p>
-
-        <div class="media well">
+  <?php if ($event->getComments()): ?>
+    <ul class="media-list">
+      <?php foreach ($event->getComments() as $comment): ?>
+        <li class="media">
           <a class="pull-left" href="#">
-            <img class="media-object" src="http://lorempixel.com/64/64/?2">
+            <img class="media-object" src="http://lorempixel.com/64/64/?1">
           </a>
           <div class="media-body">
-            <h4 class="media-heading muted">Cheapon, 22 мая 2013  32:48</h4>
-            <p>Да! Двери для всех ценителей вкусной и здоровой пищи, для тех, кому важна уютная атмосфера и внимательное обслуживание персонала!</p>
+            <h4 class="media-heading muted"><?php echo $comment->getCreator() ?>, <?php echo date('d.m.Y H:i', strtotime($comment->getCreatedAt())) ?></h4>
+            <p><?php echo $comment ?></p>
+
+            <?php if ($comment->getAnswer()): ?>
+              <div class="media well">
+                <a class="pull-left" href="#">
+                  <img class="media-object" src="http://lorempixel.com/64/64/?2">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading muted"><?php echo $comment->getModerator() ?>, <?php echo date('d.m.Y H:i', strtotime($comment->getAnsweredAt())) ?></h4>
+                  <p><?php echo $comment->getAnswer() ?></p>
+                </div>
+             </div>
+           <?php endif ?>
           </div>
-       </div>
-      </div>
-    </li>
-  </ul>
-  <form class="text-center">
-    <textarea name="" id="" cols="30" rows="10">Ваш комментарий…</textarea><br />
+        </li>
+      <?php endforeach ?>
+    </ul>
+  <?php endif ?>
+
+  <form action="<?php echo url_for('feedback/comment') ?>" class="text-center">
+    <?php echo $form->renderUsing('bootstrap') ?>
     <button type="submit" class="btn">Добавить комментарий</button>
   </form>
 </div>

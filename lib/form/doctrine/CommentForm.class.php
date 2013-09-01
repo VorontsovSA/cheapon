@@ -12,8 +12,17 @@ class CommentForm extends BaseCommentForm
 {
   public function configure()
   {
-    $this->useFields(array(
-      'answer'
-    ));
+    unset (
+      $this['created_at'],
+      $this['updated_at']
+    );
+
+    $this->getWidgetSchema()
+      ->offsetSet('event_id', new sfWidgetFormInputHidden())
+      ->setLabels([
+        'name' => 'Комментарий',
+        'answer' => 'Ответ',
+      ]);
+    ;
   }
 }

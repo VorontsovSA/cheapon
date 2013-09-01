@@ -37,8 +37,29 @@ class feedbackActions extends sfActions
     if ($form->isValid()) {
       $feedback = $form->save();
 
-      // SET FLASH
+      $this->getUser()->setFlash('flash', [
+        'type' => 'success',
+        'message' => 'Сообщение отправлено',
+      ]);
       $this->redirect('@feedback');
     }
+  }
+
+  public function executeComment(sfWebRequest $request)
+  {
+    $this->form = new CommentForm();
+    if ($this->form->bindAndSave($request->getParameter($this->form->getName()))) {
+      $this->getUser()->setFlash('flash', [
+        'type' => 'success',
+        'message' => 'Комментарий добавлен и будет опубликован после модерации',
+      ]);
+    } else {
+      $this->getUser()->setFlash('flash', [
+        'type' => 'error',
+        'message' => 'Комментарий не добавлен: введите текст',
+      ]);
+    }
+
+    $this->redirect('event/show?id=' . $request->getParameter($this->form->getName())['event_id']);
   }
 }

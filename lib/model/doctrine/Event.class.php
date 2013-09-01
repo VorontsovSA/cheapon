@@ -55,4 +55,12 @@ class Event extends BaseEvent
   {
     return 'DUMMY';
   }
+
+  public function getActiveDates()
+  {
+    return [
+      'from' => date('d.m', strtotime($this->getEventStart())),
+      'to' => date('d.m', strtotime($this->getEventEnd())),
+    ];
+  }
 }

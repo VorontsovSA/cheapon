@@ -5,4 +5,4 @@
 all:
   sf_guard_plugin:
     routes_register: false
-    #success_signin_url: @personal
+    success_signin_url: @homepage
