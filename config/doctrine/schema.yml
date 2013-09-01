@@ -35,6 +35,7 @@ City: # Город предоставления услуги
       class: sfGuardUser
       local: id
       foreign: city_id
+      foreignType: one
 
 Category: # Категория акции
   actAs:
