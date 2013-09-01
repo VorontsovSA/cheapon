@@ -20,6 +20,8 @@ sf_guard_signout:
 homepage:
   url:   /:past/:category
   param: { module: event, action: index, category: all, past: false }
+  requirements:
+    past: false|past-events
 
 show-event:
   url:   /event/show/:id
