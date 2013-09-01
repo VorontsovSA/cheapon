@@ -18,10 +18,12 @@ sf_guard_signout:
   param: { module: sfGuardAuth, action: signout }
 
 homepage:
-  url:   /:past/:category
-  param: { module: event, action: index, category: all, past: false }
-  requirements:
-    past: false|past-events
+  url:   /
+  param: { module: main, action: redirect }
+
+events:
+  url:   /events/:type/:category
+  param: { module: event, action: index, category: all, type: active }
 
 show-event:
   url:   /event/show/:id
